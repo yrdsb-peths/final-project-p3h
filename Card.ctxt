@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Card
+comment1.params=ID
+comment1.target=Card(int)
+comment2.params=showCard
+comment2.target=void\ updateImage(boolean)
+comment3.params=
+comment3.target=int\ getID()
+comment4.params=solved
+comment4.target=void\ setSolved(boolean)
+comment5.params=
+comment5.target=boolean\ getSolved()
+comment6.params=
+comment6.target=int\ getNumberOfIDs()
+numComments=7
