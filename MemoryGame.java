@@ -32,7 +32,7 @@ public class MemoryGame extends World
         //add the cards to the world
         for (int x=0; x<COLUMNS; x++) for (int y=0; y<ROWS; y++)
         {
-            addObject(cards[x*ROWS+y] = new Card(num[x*ROWS+y]), imageSize+x*(imageSize*3/2), imageSize+y*(imageSize*3/2));
+            addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize * 3/2), imageSize + y * (imageSize * 3/2));
         }
         
     }
@@ -50,7 +50,7 @@ public class MemoryGame extends World
                     activeCards[i] = null;
                 }
             }
-            return; //don't execute the rest
+            return; 
         }
         
         for (Card card : cards) //for each Card
@@ -64,7 +64,7 @@ public class MemoryGame extends World
                 }
                 else //second card
                 {
-                    if (activeCards[0].getID() == card.getID()) //found pair
+                    if (activeCards[0].getNum() == card.getNum()) //found pair
                     {
                         activeCards[0].setSolved(true);
                         activeCards[0] = null;
