@@ -11,7 +11,7 @@ public class MemoryGame extends World
     private int pauseTime = 50; //number of time the player can memorize the cards
     public MemoryGame()
     {    
-        super(COLUMNS*imageSize+(COLUMNS-1)*imageSize/2+imageSize, ROWS*imageSize+(ROWS-1)*imageSize/2+imageSize, 1);
+        super(960, 540, 1);
         
         //create an array of nums (1,1,2,2,3,3, ...)
         int[] num = new int[ROWS*COLUMNS];
@@ -32,7 +32,7 @@ public class MemoryGame extends World
         //add the cards to the world
         for (int x=0; x<COLUMNS; x++) for (int y=0; y<ROWS; y++)
         {
-            addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize * 3/2), imageSize + y * (imageSize * 3/2));
+            addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3), imageSize + y * (imageSize*4/3) - 30);
         }
         
     }
