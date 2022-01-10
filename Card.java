@@ -1,4 +1,12 @@
 import greenfoot.*;
+
+/**
+ * This class creates a total of 16 cards with from 1 to 8 with two cards for
+ * each number
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Card extends Actor
 {
     private static final GreenfootImage[] images =
@@ -30,7 +38,8 @@ public class Card extends Actor
     {
         this.solved = solved;
     }
-    public boolean getSolved() {
+    public boolean getSolved() 
+    {
         return solved;
     }
     
@@ -39,7 +48,8 @@ public class Card extends Actor
         setImage(images[showCard ? num : 0]);
     }
     
-    public static int getNumberOfIDs() {
+    public static int getNumberOfIDs() 
+    {
         return images.length-1;
     }
 }

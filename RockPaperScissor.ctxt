@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=RockPaperScissor
+comment0.text=\r\n\ This\ class\ is\ the\ rock\ paper\ scissors\ game.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=RockPaperScissor()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
+comment2.params=user\ computer
+comment2.target=java.lang.String\ getWinner(java.lang.String,\ java.lang.String)
+numComments=3

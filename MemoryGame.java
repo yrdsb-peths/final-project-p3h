@@ -1,5 +1,11 @@
 import greenfoot.*;
 
+/**
+ * This class is the memory card game.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class MemoryGame extends World
 {
     private static final int ROWS=4, COLUMNS=4;
@@ -32,7 +38,7 @@ public class MemoryGame extends World
         //add the cards to the world
         for (int x=0; x<COLUMNS; x++) for (int y=0; y<ROWS; y++)
         {
-            addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3), imageSize + y * (imageSize*4/3) - 30);
+            addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3) - 25, imageSize + y * (imageSize*4/3) - 30);
         }
         
     }
