@@ -15,6 +15,7 @@ public class MemoryGame extends World
     private Card[] activeCards = new Card[2];
     private int timer = 0; //show images while timer>0
     private int pauseTime = 50; //number of time the player can memorize the cards
+    
     public MemoryGame()
     {    
         super(960, 540, 1);
