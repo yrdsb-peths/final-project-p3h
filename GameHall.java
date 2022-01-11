@@ -13,7 +13,7 @@ public class GameHall extends World
     private Buttons jackpot = new Buttons(new GreenfootImage("jackpot.png"));
     private Buttons trivia = new Buttons(new GreenfootImage("triviabutton.png"));
     
-    private Buttons pausemenu = new Buttons(new GreenfootImage("pausemenu.png"));
+    public Buttons pausemenu = new Buttons(new GreenfootImage("pausemenu.png"));
     public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
     public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
     private Buttons shop = new Buttons(new GreenfootImage("shop.png"));

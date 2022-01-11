@@ -42,6 +42,8 @@ public class MemoryGame extends World
             addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3) - 25, imageSize + y * (imageSize*4/3) - 30);
         }
         
+        //add back to title button
+        addObject(GameHall.backtotitle, 750, 500);
     }
     
     public void act()
@@ -102,5 +104,7 @@ public class MemoryGame extends World
                 return;
             }
         }
+        
+        GameHall.checkPause();
     }
 }
