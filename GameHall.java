@@ -62,7 +62,7 @@ public class GameHall extends World
         }
         else if(Greenfoot.mouseClicked(jackpot))
         {
-            Greenfoot.setWorld(new Jackpot());
+            //Greenfoot.setWorld(new Jackpot());
         }
 
         if(Greenfoot.mouseClicked(shop))
