@@ -11,4 +11,8 @@ public class Buttons extends Actor
     public Buttons(GreenfootImage img){
         setImage(img);
     }
+    
+    public void updateImage(GreenfootImage img){
+        setImage(img);
+    }
 }
