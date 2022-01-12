@@ -27,8 +27,9 @@ public class Title extends World
     {    
         // Create a new world with 960x540 cells with a cell size of 1x1 pixels.
         super(960, 540, 1); 
+        setBackground(new GreenfootImage("TitleScreen.png"));
         
-        addObject(playButton, 480, 270);
+        addObject(playButton, 480, 300);
         addObject(achievementsButton, 180, 400);
         addObject(inventoryButton, 480, 400);
         addObject(exitButton, 780, 400);

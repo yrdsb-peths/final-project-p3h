@@ -27,8 +27,6 @@ public class Jackpot extends World
     private Buttons spin = new Buttons(new GreenfootImage("SpinButton-U.png"));
     
     private GreenfootImage spinButton;
-    
-    public static GoldenTickets currency = new GoldenTickets();
     /**
      * Constructor for objects of class Jackpot.
      * 
@@ -56,7 +54,7 @@ public class Jackpot extends World
         addObject(spin, 820, 318);
         
         //Add Golden tickets Counter
-        addObject(currency, 150, 500);
+        addObject(GameHall.currency, 150, 500);
     }
     
     public void act()
