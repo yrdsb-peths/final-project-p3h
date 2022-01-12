@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GoldenTickets extends Actor
 {
-    public int numOfTickets = 100; 
+    public static int numOfTickets = 100; 
     /**
      * Act - do whatever the GoldenTickets wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,5 +26,10 @@ public class GoldenTickets extends Actor
     public void setTickets(int num)
     {
         numOfTickets = num;
+    }
+    
+    public static void addTickets(int num)
+    {
+        numOfTickets += num;
     }
 }
