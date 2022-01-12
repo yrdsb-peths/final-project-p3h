@@ -64,7 +64,7 @@ public class Jackpot extends World
         if(Greenfoot.mouseClicked(spin))
         {
             //Deducts cost to run Jackpot
-            GoldenTickets.addTickets(5);     
+            GoldenTickets.addTickets(-5);     
             
             removeObject(spinW);
             removeObject(spinI);
