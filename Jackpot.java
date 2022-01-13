@@ -55,6 +55,9 @@ public class Jackpot extends World
         
         //Add Golden tickets Counter
         addObject(GameHall.currency, 150, 500);
+        
+        //Add back to title button
+        addObject(GameHall.backtotitle, 820, 500);
     }
     
     public void act()
