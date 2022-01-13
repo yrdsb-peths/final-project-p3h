@@ -167,5 +167,7 @@ public class RockPaperScissor extends World
     
         userInput = "";
         computerInput = "";
+        
+        GameHall.checkPause();
     }
 }
