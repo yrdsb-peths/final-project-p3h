@@ -29,6 +29,8 @@ public class RockPaperScissor extends World
     
     private Counter playerWins = new Counter();
     private Counter computerWins = new Counter();
+    
+    private boolean ticketsAdded = false;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -41,9 +43,8 @@ public class RockPaperScissor extends World
         addObject(rock, 280, 430);
         addObject(paper, 480, 430);
         addObject(scissors, 680, 430);
-        
-        //Add back to title button
-        addObject(GameHall.backtotitle, 860, 40);
+        //Add Golden tickets Counter
+        addObject(GameHall.currency, 150, 520);
     }
     
     private String getComputerInput()
@@ -137,6 +138,40 @@ public class RockPaperScissor extends World
         }
     }
     
+    private boolean checkGameEnd()
+    {
+        if(playerWins.getScore() >= 5 || computerWins.getScore() >= 5) return true;
+        return false;
+    }
+    
+    private void gameEndScreen()
+    {
+        if(playerWins.getScore() >= 5)
+        {
+            setBackground(new GreenfootImage("rps-WinScreen.png"));
+            if(!ticketsAdded)
+            {
+                GoldenTickets.addTickets(20);
+            }
+            
+            ticketsAdded = true;
+        }
+        else
+        {
+            setBackground(new GreenfootImage("rps-LoseScreen.png")); 
+            if(!ticketsAdded)
+            {
+                GoldenTickets.addTickets(-10);
+            }
+            
+            ticketsAdded = true;
+        }
+        //remove player interactive buttons
+        removeObject(rock);
+        removeObject(paper);
+        removeObject(scissors);
+    }
+    
     public void act()
     {
         //Add player and computer score counter
@@ -168,6 +203,13 @@ public class RockPaperScissor extends World
         userInput = "";
         computerInput = "";
         
-        GameHall.checkPause();
+        //Check if player or computer hits 5 points first, then pop out game end screen
+        if(checkGameEnd())
+        {
+            //Add back to title button
+            addObject(GameHall.backtotitle, 495, 390);
+            gameEndScreen();
+            GameHall.checkPause();
+        }
     }
 }

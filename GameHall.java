@@ -40,8 +40,6 @@ public class GameHall extends World
         //add pause menu & shop
         addObject(pausemenu, 400, 480);
         addObject(shop, 560, 480);
-        
-        
     }
     
     public void act()
