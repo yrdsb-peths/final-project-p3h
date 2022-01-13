@@ -17,7 +17,7 @@ public class Counter extends Actor
      */
     public void act()
     {
-        setImage(new GreenfootImage("Score: " + score, 42, Color.WHITE, new Color(0,0,0,0)));
+        setImage(new GreenfootImage("Score: " + score, 42, Color.BLACK, new Color(0,0,0,0)));
     }
     //Whenever the player finishes a word/board, the counter goes up by 1
     public void add(){

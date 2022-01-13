@@ -9,48 +9,165 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RockPaperScissor extends World
 {
-    private static final String USER_PLAYER = "User wins!";
-    private static final String COMPUTER_PLAYER = "Computer wins!";
-    private static final String TIE = "Tie";
+    private Buttons rock = new Buttons(new GreenfootImage("rockButton.png"));
+    private Buttons paper = new Buttons(new GreenfootImage("paperButton.png"));
+    private Buttons scissors = new Buttons(new GreenfootImage("scissorsButton.png"));
+    private Buttons computerRock = new Buttons(new GreenfootImage("computerRock.png"));
+    private Buttons computerPaper = new Buttons(new GreenfootImage("computerPaper.png"));
+    private Buttons computerScissors = new Buttons(new GreenfootImage("computerScissors.png"));
+    
+    private String playerWonRound = "You win this round!";
+    private String computerWonRound = "You lost this round";
+    private String playerTie = "It's a tie!";
+    
+    private Buttons winString = new Buttons(new GreenfootImage(playerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
+    private Buttons loseString = new Buttons(new GreenfootImage(computerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
+    private Buttons tieString = new Buttons(new GreenfootImage(playerTie, 40, Color.BLACK, new Color(0,0,0,0)));
+    
+    private String userInput = "";
+    private String computerInput;
+    
+    private Counter playerWins = new Counter();
+    private Counter computerWins = new Counter();
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
     public RockPaperScissor()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(960, 540, 1); 
+        
+        //Add Player interactive buttons
+        addObject(rock, 280, 430);
+        addObject(paper, 480, 430);
+        addObject(scissors, 680, 430);
+        
+        //Add back to title button
+        addObject(GameHall.backtotitle, 860, 40);
     }
+    
+    private String getComputerInput()
+    {
+        Random r = new Random();
+        int n = r.nextInt(3);
+        if(n == 0)
+        {
+            return "rock";
+        }
+        if(n == 1)
+        {
+            return "paper";
+        }
+        return "scissors";
+    }
+    
+    private void getComputerImage(String str)
+    {
+        if(str.equals("rock")) addObject(computerRock, 490, 165);
+        else if(str.equals("paper")) addObject(computerPaper,490, 165);
+        else if(str.equals("scissors")) addObject(computerScissors, 490, 165);
+    }
+    
+    private void removeCompImg()
+    {
+        removeObject(computerRock);
+        removeObject(computerPaper);
+        removeObject(computerScissors);
+    }
+    
     private String getWinner(String user, String computer)
     {
         if(user.equals("rock"))
         {
             if(computer.equals("paper"))
             {
-                return COMPUTER_PLAYER;
+                return computerWonRound;
             }
             else if(computer.equals("scissors"))
             {
-                return USER_PLAYER;
+                return playerWonRound;
             }
         }
         else if(user.equals("paper") && computer.equals("scissors"))
         {
-            return COMPUTER_PLAYER;
+            return computerWonRound;
         }
         else if(user.equals("scissors") && computer.equals("paper"))
         {
-            return USER_PLAYER;
+            return playerWonRound;
         }
         else if(computer.equals("rock"))
         {
             if(user.equals("scissors"))
             {
-                return COMPUTER_PLAYER;
+                return computerWonRound;
             }
-            return USER_PLAYER;
+            return playerWonRound;
         }
-        return TIE;
+        return playerTie;
     }
-  
+    
+    private void checkWin(String str)
+    {
+        if(str.equals(playerWonRound))
+        {
+            playerWins.add();
+            getComputerImage(computerInput);
+            addObject(winString, 480, 270);
+            Greenfoot.delay(40);
+            removeObject(winString);
+            removeCompImg();
+        }
+        else if(str.equals(computerWonRound))
+        {
+            computerWins.add();
+            getComputerImage(computerInput);
+            addObject(loseString, 480, 270);
+            Greenfoot.delay(40);
+            removeObject(loseString);
+            removeCompImg();
+        }
+        else if(str.equals(playerTie))
+        {
+            getComputerImage(computerInput);
+            addObject(tieString, 480, 270);
+            Greenfoot.delay(40);
+            removeObject(tieString);
+            removeCompImg();
+        }
+    }
+    
+    public void act()
+    {
+        //Add player and computer score counter
+        addObject(playerWins, 200, 300);
+        addObject(computerWins, 760, 300);
+        
+        // Random computer rock/paper/scissors
+        computerInput = getComputerInput();
+        
+        if(Greenfoot.mouseClicked(rock))
+        {
+            userInput = "rock";
+            String str = getWinner(userInput, computerInput);
+            checkWin(str);
+        }
+        else if(Greenfoot.mouseClicked(paper))
+        {
+            userInput = "paper";
+            String str = getWinner(userInput, computerInput);
+            checkWin(str);
+        }
+        else if(Greenfoot.mouseClicked(scissors))
+        {
+            userInput = "scissors";
+            String str = getWinner(userInput, computerInput);
+            checkWin(str);
+        }
+    
+        userInput = "";
+        computerInput = "";
+        
+        GameHall.checkPause();
+    }
 }
