@@ -56,7 +56,7 @@ public class GameHall extends World
         }
         else if(Greenfoot.mouseClicked(trivia))
         {
-            //Greenfoot.setWorld(new Trivia());
+            Greenfoot.setWorld(new HangMan());
         }
         else if(Greenfoot.mouseClicked(jackpot))
         {
