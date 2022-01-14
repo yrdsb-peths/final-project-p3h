@@ -42,8 +42,8 @@ public class MemoryGame extends World
             addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3) - 25, imageSize + y * (imageSize*4/3) - 30);
         }
         
-        //add back to title button
-        addObject(GameHall.backtotitle, 750, 500);
+        //Add Golden tickets Counter
+        addObject(GameHall.currency, 820, 500);
     }
     
     public void act()
@@ -91,7 +91,9 @@ public class MemoryGame extends World
                         }
                         if (allSolved)
                         {
-                            Greenfoot.stop();
+                            //add back to title button
+                            addObject(GameHall.backtotitle, 750, 500);
+                            GoldenTickets.addTickets(20);
                         }
                     }
                     else //different cards

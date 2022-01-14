@@ -105,7 +105,7 @@ public class Jackpot extends World
             }
             else if(nums[0] == 2 || nums[1] == 2 || nums[2] == 2)
             {
-                GoldenTickets.addTickets(10);
+                GoldenTickets.addTickets(15);
             }
             else if(nums[0] == 4 || nums[1] == 4 || nums[2] == 4)
             {

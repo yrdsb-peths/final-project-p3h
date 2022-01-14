@@ -48,6 +48,9 @@ public class HangMan extends World
             Buttons underline = new Buttons(new GreenfootImage("_", 42, Color.BLACK, new Color(0,0,0,0)));
             addObject(underline, firstX + 36 * i, getHeight() - 50);
         }
+        
+        //Add Golden tickets Counter
+        addObject(GameHall.currency, 150, 500);
     }
     
     // Player interacts with game by clicking on buttons in the act method
@@ -94,6 +97,7 @@ public class HangMan extends World
                     {
                         removeObject(letters[j]);
                     }
+                    GoldenTickets.addTickets(20);
                     addObject(GameHall.backtotitle, 810, 300);
                 }
             }
