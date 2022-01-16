@@ -100,7 +100,7 @@ public class HangMan extends World
                     GoldenTickets.addTickets(20);
                     Buttons winScreen = new Buttons(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
-                    addObject(GameHall.backtotitle, 810, 300);
+                    addObject(GameHall.backtoarcade, 810, 300);
                 }
             }
         }

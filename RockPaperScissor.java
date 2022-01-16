@@ -207,7 +207,7 @@ public class RockPaperScissor extends World
         if(checkGameEnd())
         {
             //Add back to title button
-            addObject(GameHall.backtotitle, 495, 390);
+            addObject(GameHall.backtoarcade, 495, 390);
             gameEndScreen();
             GameHall.checkPause();
         }

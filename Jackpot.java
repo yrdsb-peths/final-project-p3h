@@ -57,7 +57,7 @@ public class Jackpot extends World
         addObject(GameHall.currency, 150, 500);
         
         //Add back to title button
-        addObject(GameHall.backtotitle, 820, 500);
+        addObject(GameHall.backtoarcade, 820, 500);
     }
     
     public void act()

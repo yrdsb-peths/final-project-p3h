@@ -16,6 +16,7 @@ public class GameHall extends World
     public Buttons pausemenu = new Buttons(new GreenfootImage("pausemenu.png"));
     public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
     public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
+    public static Buttons backtoarcade = new Buttons(new GreenfootImage("BackToArcade.png"));
     private Buttons shop = new Buttons(new GreenfootImage("shop.png"));
     
     private int pauseOption = 1;
@@ -92,6 +93,9 @@ public class GameHall extends World
         {
             Greenfoot.setWorld(new Title());
         }
-        
+        if(Greenfoot.mouseClicked(backtoarcade))
+        {
+            Greenfoot.setWorld(new GameHall());
+        }
     }
 }
