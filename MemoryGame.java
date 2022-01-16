@@ -16,10 +16,10 @@ public class MemoryGame extends World
     private int timer = 0; //show images while timer>0
     private int pauseTime = 50; //number of time the player can memorize the cards
     
+    private SimpleTimer timeSec = new SimpleTimer(); //timer to count amount of seconds
     public MemoryGame()
     {    
         super(960, 540, 1);
-        
         //create an array of nums (1,1,2,2,3,3, ...)
         int[] num = new int[ROWS*COLUMNS];
         for (int i=0; i<num.length; i++)
@@ -44,6 +44,8 @@ public class MemoryGame extends World
         
         //Add Golden tickets Counter
         addObject(GameHall.currency, 820, 500);
+        
+        timeSec.mark();
     }
     
     public void act()
@@ -92,7 +94,9 @@ public class MemoryGame extends World
                         if (allSolved)
                         {
                             //add back to title button
-                            addObject(GameHall.backtotitle, 750, 500);
+                            addObject(GameHall.backtotitle, 750, 450);
+                            addObject(new Buttons(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
+                            ,26,Color.BLACK, new Color(0,0,0,0))), 750, 400);
                             GoldenTickets.addTickets(20);
                         }
                     }

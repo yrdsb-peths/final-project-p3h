@@ -98,6 +98,8 @@ public class HangMan extends World
                         removeObject(letters[j]);
                     }
                     GoldenTickets.addTickets(20);
+                    Buttons winScreen = new Buttons(new GreenfootImage("hangman-winScreen.png"));
+                    addObject(winScreen, 800, 150);
                     addObject(GameHall.backtotitle, 810, 300);
                 }
             }
@@ -133,7 +135,7 @@ public class HangMan extends World
                     for(int i=0; i<word.length(); i++)
                     {
                         showLetter(i, Color.RED);
-                    }
+                    } 
                     addObject(GameHall.backtotitle, 810, 300);
                     break;
             }
