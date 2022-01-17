@@ -8,11 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Buttons extends Actor
 {
+    public boolean picked = false;
     public Buttons(GreenfootImage img){
         setImage(img);
     }
     
     public void updateImage(GreenfootImage img){
         setImage(img);
+    }
+    
+    public boolean wasPicked(){
+        return picked;
     }
 }

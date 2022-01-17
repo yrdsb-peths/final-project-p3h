@@ -11,7 +11,15 @@ public class Shop extends World
 {
     public HashMap<Buttons,Integer> items = new HashMap<Buttons,Integer>();
     
-    public List<Integer> boughtItems = new ArrayList<Integer>();
+    public static List<Integer> boughtItems = new ArrayList<Integer>();
+    
+    //add buttons
+        Buttons goldenEgg = new Buttons(new GreenfootImage("s-goldenEgg.png"));
+        Buttons laptop = new Buttons(new GreenfootImage("s-laptop.png"));
+        Buttons stuffy = new Buttons(new GreenfootImage("s-stuffy.png"));
+        Buttons mysteryBox = new Buttons(new GreenfootImage("s-mysteryBox.png"));
+        Buttons garlicBread = new Buttons(new GreenfootImage("s-garlicBread.png"));
+        Buttons phone = new Buttons(new GreenfootImage("s-phone.png"));
     /**
      * Constructor for objects of class Shop.
      * 
@@ -21,49 +29,62 @@ public class Shop extends World
         super(960, 540, 1); 
         
         addObject(GameHall.currency, 830, 520);
-        
-        //add buttons
+        addObject(GameHall.backtotitle, 100, 510);
+ 
         // add shop object into HashMap
-        items.put(new Buttons(new GreenfootImage("goldenEgg.png")), 50);
-        items.put(new Buttons(new GreenfootImage("laptop.png")), 20);
-        items.put(new Buttons(new GreenfootImage("puppy.png")), 10);
-        items.put(new Buttons(new GreenfootImage("mysteryBox.png")), 15);
-        items.put(new Buttons(new GreenfootImage("garlicBread.png")), 5);
-        items.put(new Buttons(new GreenfootImage("phone.png")), 30);
+        if(!goldenEgg.wasPicked())items.put(goldenEgg, 50);
+        if(!laptop.wasPicked())items.put(laptop, 20);
+        if(!stuffy.wasPicked())items.put(stuffy, 10);
+        if(!mysteryBox.wasPicked())items.put(mysteryBox, 15);
+        if(!garlicBread.wasPicked())items.put(garlicBread, 5);
+        if(!phone.wasPicked())items.put(phone, 30);
         
         //add shop objects onto world
-        int row = 0;
+        int column = 0;
         for(Buttons product : items.keySet())
         {
             int startX = getWidth()/2 - 200;
-            if(row < 3){
-                addObject(product, startX + row%3 * 200, 205);
+            if(column < 3){
+                addObject(product, startX + column%3 * 200, 205);
             }
             else{
-                addObject(product, startX + row%3 * 200, 420);
+                addObject(product, startX + column%3 * 200, 420);
             }
-            row++;
+            column++;
         }
     }
     
     public void act()
     {
-        if(Greenfoot.mouseClicked(null))
-        {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            if(mouse == null) return;
-            Actor actor = mouse.getActor();
-            if(actor != null && actor instanceof Buttons) checkClick((Buttons)actor);
+        if(Greenfoot.mouseClicked(goldenEgg)){
+            check(goldenEgg);
         }
+        if(Greenfoot.mouseClicked(laptop)){
+            check(laptop);
+        }
+        if(Greenfoot.mouseClicked(stuffy)){
+            check(stuffy);
+        }
+        if(Greenfoot.mouseClicked(garlicBread)){
+            check(garlicBread);
+        }
+        if(Greenfoot.mouseClicked(phone)){
+            check(phone);
+        }
+        if(Greenfoot.mouseClicked(mysteryBox)){
+            check(mysteryBox);
+        }
+        GameHall.checkPause();
     }
     
-    private void checkClick(Buttons button)
+    private void check(Buttons button)
     {
         int price = items.get(button);
         GoldenTickets.addTickets(-price);
         
         boughtItems.add(price);
         
+        button.picked = true;
         removeObject(button);
     }
 }
