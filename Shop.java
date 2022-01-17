@@ -9,6 +9,8 @@ import java.util.*;
  */
 public class Shop extends World
 {
+    public static Shop shop;
+    
     public HashMap<Buttons,Integer> items = new HashMap<Buttons,Integer>();
     
     public static List<Integer> boughtItems = new ArrayList<Integer>();
@@ -27,17 +29,18 @@ public class Shop extends World
     public Shop()
     {    
         super(960, 540, 1); 
+        shop = this;
         
         addObject(GameHall.currency, 830, 520);
         addObject(GameHall.backtotitle, 100, 510);
  
         // add shop object into HashMap
-        if(!goldenEgg.wasPicked())items.put(goldenEgg, 50);
-        if(!laptop.wasPicked())items.put(laptop, 20);
-        if(!stuffy.wasPicked())items.put(stuffy, 10);
-        if(!mysteryBox.wasPicked())items.put(mysteryBox, 15);
-        if(!garlicBread.wasPicked())items.put(garlicBread, 5);
-        if(!phone.wasPicked())items.put(phone, 30);
+        items.put(goldenEgg, 50);
+        items.put(laptop, 20);
+        items.put(stuffy, 10);
+        items.put(mysteryBox, 15);
+        items.put(garlicBread, 5);
+        items.put(phone, 30);
         
         //add shop objects onto world
         int column = 0;
@@ -74,7 +77,7 @@ public class Shop extends World
         if(Greenfoot.mouseClicked(mysteryBox)){
             check(mysteryBox);
         }
-        GameHall.checkPause();
+        if(Greenfoot.mouseClicked(GameHall.backtotitle)) Greenfoot.setWorld(new GameHall());
     }
     
     private void check(Buttons button)
@@ -84,7 +87,6 @@ public class Shop extends World
         
         boughtItems.add(price);
         
-        button.picked = true;
         removeObject(button);
     }
 }

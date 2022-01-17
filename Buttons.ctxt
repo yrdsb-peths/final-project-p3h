@@ -5,6 +5,4 @@ comment1.params=img
 comment1.target=Buttons(greenfoot.GreenfootImage)
 comment2.params=img
 comment2.target=void\ updateImage(greenfoot.GreenfootImage)
-comment3.params=
-comment3.target=boolean\ wasPicked()
-numComments=4
+numComments=3

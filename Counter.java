@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Counter extends Actor
 {
+    public static Counter shopCounter = new Counter();
     //The score of the counter
     public int score = 0;
     /**
