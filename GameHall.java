@@ -68,7 +68,12 @@ public class GameHall extends World
 
         if(Greenfoot.mouseClicked(shop))
         {
-            Greenfoot.setWorld(new Shop());
+            if(!Buttons.shopExists)
+            {
+                Buttons.shopExists = true;
+                Greenfoot.setWorld(new Shop());
+            }
+            else Greenfoot.setWorld(Shop.shop);
         }
         if(Greenfoot.mouseClicked(pausemenu))
         {
