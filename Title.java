@@ -17,8 +17,8 @@ public class Title extends World
     public static GreenfootSound bgm = new GreenfootSound("Music.mp3");
     public static GreenfootSound cursor = new GreenfootSound("Cursor.mp3");
     public static GreenfootSound click = new GreenfootSound("Click.mp3");
-    //private Buttons musicOn = new Buttons(new GreenfootImage("SoundOn.png"), getHeight()/10, 1);
-    //private Buttons musicOff = new Buttons(new GreenfootImage("SoundOff.png"), getHeight()/10, 1);
+    private Buttons musicOn = new Buttons(new GreenfootImage("musicon.png"));
+    private Buttons musicOff = new Buttons(new GreenfootImage("musicoff.png"));
     /**
      * Constructor for objects of class Title.
      * 
@@ -34,6 +34,7 @@ public class Title extends World
         addObject(inventoryButton, 480, 400);
         addObject(exitButton, 780, 400);
         
+        addObject(musicOff, 930, 30);
     }
     
     public void act()
@@ -55,6 +56,17 @@ public class Title extends World
             //addObject(exitScreen, getWidth()/2+50, getHeight()/2+15);
             bgm.pause();
             Greenfoot.stop();
+        }
+        
+        if(Greenfoot.mouseClicked(musicOn)){
+            bgm.pause();
+            addObject(musicOff, 930, 30);
+            removeObject(musicOn);
+        }
+        if(Greenfoot.mouseClicked(musicOff)){
+            Title.bgm.playLoop();
+            addObject(musicOn, 930, 30);
+            removeObject(musicOff);
         }
     }
 }

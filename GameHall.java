@@ -17,6 +17,8 @@ public class GameHall extends World
     public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
     public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
     public static Buttons backtoarcade = new Buttons(new GreenfootImage("BackToArcade.png"));
+    public Buttons musicOnMenu = new Buttons(new GreenfootImage("Menu-musicOn.png"));
+    public Buttons musicOffMenu = new Buttons(new GreenfootImage("Menu-musicOff.png"));
     private Buttons shop = new Buttons(new GreenfootImage("shop.png"));
     
     private int pauseOption = 1;
@@ -72,6 +74,16 @@ public class GameHall extends World
         {
             drawPauseMenu();
         }
+        if(Greenfoot.mouseClicked(musicOnMenu)){
+            Title.bgm.pause();
+            addObject(musicOffMenu, 480, 300);
+            removeObject(musicOnMenu);
+        }
+        if(Greenfoot.mouseClicked(musicOffMenu)){
+            Title.bgm.playLoop();
+            addObject(musicOnMenu, 480, 300);
+            removeObject(musicOffMenu);
+        }
         checkPause();
     }
     
@@ -80,8 +92,9 @@ public class GameHall extends World
    
         addObject(new Buttons(new GreenfootImage("menuscreen.png")), 480, 270);
         addObject(resume, 480, 240);
-        //addObject(new Buttons(new GreenfootImage("Menu-music" + ((TitleScreen.bgm.isPlaying()) ? "On" : "Off") + ".png")));
-        addObject(backtotitle, 480, 300);
+        if(Title.bgm.isPlaying()) addObject(musicOnMenu, 480, 300);
+        else addObject(musicOffMenu, 480, 300);
+        addObject(backtotitle, 480, 360);
     }
     
     public static void checkPause(){
