@@ -66,6 +66,7 @@ public class Jackpot extends World
         {
             //Deducts cost to run Jackpot
             GoldenTickets.addTickets(-5);     
+            Title.cashSound.play();
             
             removeObject(spinW);
             removeObject(spinI);

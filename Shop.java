@@ -81,7 +81,7 @@ public class Shop extends World
     
     private void check(Buttons button)
     {
-        
+        Title.cashSound.play();
         int price = items.get(button);
         GoldenTickets.addTickets(-price);
         

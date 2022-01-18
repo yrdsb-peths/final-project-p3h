@@ -86,6 +86,7 @@ public class HangMan extends World
         {
             if(Character.toLowerCase(letter) == word.charAt(i))
             {
+                Title.winSound.play();
                 showLetter(i, Color.BLACK);
                 Greenfoot.delay(1);
                 inWord = true;
@@ -106,6 +107,7 @@ public class HangMan extends World
         }
         if(!inWord)
         {
+            Title.loseSound.play();
             wrong++;
             switch(wrong)
             {

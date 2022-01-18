@@ -112,6 +112,7 @@ public class RockPaperScissor extends World
     {
         if(str.equals(playerWonRound))
         {
+            Title.winSound.play();
             playerWins.add();
             getComputerImage(computerInput);
             addObject(winString, 480, 270);
@@ -121,6 +122,7 @@ public class RockPaperScissor extends World
         }
         else if(str.equals(computerWonRound))
         {
+            Title.loseSound.play();
             computerWins.add();
             getComputerImage(computerInput);
             addObject(loseString, 480, 270);
