@@ -17,6 +17,9 @@ public class Title extends World
     public static GreenfootSound bgm = new GreenfootSound("Music.mp3");
     public static GreenfootSound cursor = new GreenfootSound("Cursor.mp3");
     public static GreenfootSound click = new GreenfootSound("Click.mp3");
+    public static GreenfootSound winSound = new GreenfootSound("win-sound.mp3");
+    public static GreenfootSound loseSound = new GreenfootSound("lose-sound.mp3");
+    public static GreenfootSound cashSound = new GreenfootSound("cash-sound.mp3");
     private Buttons musicOn = new Buttons(new GreenfootImage("musicon.png"));
     private Buttons musicOff = new Buttons(new GreenfootImage("musicoff.png"));
     

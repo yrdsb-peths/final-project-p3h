@@ -53,23 +53,28 @@ public class GameHall extends World
         addObject(currency, 130, 500);
         if(Greenfoot.mouseClicked(memoryCard))
         {
+            Title.click.play();
             Greenfoot.setWorld(new MemoryGame());
         }
         else if(Greenfoot.mouseClicked(rockpaperscissors))
         {
+            Title.click.play();
             Greenfoot.setWorld(new RockPaperScissor());
         }
         else if(Greenfoot.mouseClicked(trivia))
         {
+            Title.click.play();
             Greenfoot.setWorld(new HangMan());
         }
         else if(Greenfoot.mouseClicked(jackpot))
         {
+            Title.click.play();
             Greenfoot.setWorld(new Jackpot());
         }
 
         if(Greenfoot.mouseClicked(shop))
         {
+            Title.click.play();
             if(!Buttons.shopExists)
             {
                 Buttons.shopExists = true;
@@ -79,6 +84,7 @@ public class GameHall extends World
         }
         if(Greenfoot.mouseClicked(pausemenu))
         {
+            Title.click.play();
             drawPauseMenu();
         }
         if(Greenfoot.mouseClicked(musicOnMenu)){
@@ -107,14 +113,17 @@ public class GameHall extends World
     public static void checkPause(){
         if(Greenfoot.mouseClicked(resume))
         {
+            Title.click.play();
             Greenfoot.setWorld(new GameHall());
         }
         if(Greenfoot.mouseClicked(backtotitle))
         {
+            Title.click.play();
             Greenfoot.setWorld(new Title());
         }
         if(Greenfoot.mouseClicked(backtoarcade))
         {
+            Title.click.play();
             Greenfoot.setWorld(new GameHall());
         }
     }

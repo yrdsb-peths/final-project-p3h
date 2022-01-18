@@ -95,6 +95,7 @@ public class MemoryGame extends World
                         {
                             //add back to title button
                             addObject(GameHall.backtoarcade, 750, 450);
+                            Title.winSound.play();
                             addObject(new Buttons(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
                             ,26,Color.BLACK, new Color(0,0,0,0))), 750, 400);
                             GoldenTickets.addTickets(20);

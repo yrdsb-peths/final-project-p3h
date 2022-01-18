@@ -76,11 +76,12 @@ public class Shop extends World
         if(Greenfoot.mouseClicked(mysteryBox)){
             check(mysteryBox);
         }
-        if(Greenfoot.mouseClicked(GameHall.backtoarcade)) Greenfoot.setWorld(new GameHall());
+        GameHall.checkPause();
     }
     
     private void check(Buttons button)
     {
+        Title.cashSound.play();
         int price = items.get(button);
         GoldenTickets.addTickets(-price);
         

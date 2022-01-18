@@ -9,12 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Buttons extends Actor
 {
     public static boolean shopExists = false;
+    public GreenfootImage img;
     
     public Buttons(GreenfootImage img){
-        setImage(img);
-    }
-    
-    public void updateImage(GreenfootImage img){
+        this.img = img;
         setImage(img);
     }
 }

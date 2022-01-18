@@ -62,7 +62,7 @@ public class HangMan extends World
             MouseInfo mouse = Greenfoot.getMouseInfo();
             if(mouse == null) return;
             Actor actor = mouse.getActor();
-            if(actor != null && actor instanceof Letter) letterCheckClick((Letter)actor);
+            if(actor != null && actor instanceof Letter)letterCheckClick((Letter)actor);
         }
         
         GameHall.checkPause();
@@ -86,6 +86,7 @@ public class HangMan extends World
         {
             if(Character.toLowerCase(letter) == word.charAt(i))
             {
+                Title.winSound.play();
                 showLetter(i, Color.BLACK);
                 Greenfoot.delay(1);
                 inWord = true;
@@ -108,6 +109,7 @@ public class HangMan extends World
         }
         if(!inWord)
         {
+            Title.loseSound.play();
             wrong++;
             switch(wrong)
             {
