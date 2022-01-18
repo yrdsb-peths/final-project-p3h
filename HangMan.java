@@ -62,7 +62,7 @@ public class HangMan extends World
             MouseInfo mouse = Greenfoot.getMouseInfo();
             if(mouse == null) return;
             Actor actor = mouse.getActor();
-            if(actor != null && actor instanceof Letter) letterCheckClick((Letter)actor);
+            if(actor != null && actor instanceof Letter)letterCheckClick((Letter)actor);
         }
         
         GameHall.checkPause();
