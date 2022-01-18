@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Achievement
+comment0.text=\r\n\ An\ achievement\ with\ a\ progress\ bar\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=theAch\ theProgress\ theTotal
+comment1.target=Achievement(greenfoot.GreenfootImage,\ int,\ int)
+comment2.params=progress\ total
+comment2.target=greenfoot.GreenfootImage\ progressBar(int,\ int)
+comment3.params=prog
+comment3.target=void\ setProgress(int)
+comment4.params=
+comment4.target=void\ act()
+numComments=5

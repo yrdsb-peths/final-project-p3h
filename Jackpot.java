@@ -112,16 +112,12 @@ public class Jackpot extends World
                 GoldenTickets.addTickets(-10);
             }
             
-            
+            //Set game as played
+            Title.gamesPlayed[2] = true;
         }
         GameHall.checkPause();
     }
-    
-    //Update the tiles
-    private void updateTiles(JackpotTile newTile)
-    {
-        
-    }
+
     
     //Duplicate image to all 3 rows of an array at column c
     private void addImageArray(GreenfootImage[][] arr, GreenfootImage img, int c)

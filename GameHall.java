@@ -26,6 +26,7 @@ public class GameHall extends World
     private boolean isDown = false;
     
     public static GoldenTickets currency = new GoldenTickets();
+    
     /**
      * Constructor for objects of class GameHall.
      * 
@@ -43,6 +44,7 @@ public class GameHall extends World
         //add pause menu & shop
         addObject(pausemenu, 400, 480);
         addObject(shop, 560, 480);
+        
     }
     
     public void act()

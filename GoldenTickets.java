@@ -18,7 +18,7 @@ public class GoldenTickets extends Actor
         setImage(new GreenfootImage("Golden Tickets: " + numOfTickets, 30, new Color(227,190,43), new Color(0,0,0,0), Color.BLACK));
     }
     
-    public int getTickets()
+    public static int getTickets()
     {
         return numOfTickets;
     }

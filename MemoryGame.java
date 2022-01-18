@@ -98,6 +98,9 @@ public class MemoryGame extends World
                             addObject(new Buttons(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
                             ,26,Color.BLACK, new Color(0,0,0,0))), 750, 400);
                             GoldenTickets.addTickets(20);
+                            
+                            //Set this game as played
+                            Title.gamesPlayed[0] = true;
                         }
                     }
                     else //different cards

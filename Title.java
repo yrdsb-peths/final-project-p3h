@@ -19,6 +19,10 @@ public class Title extends World
     public static GreenfootSound click = new GreenfootSound("Click.mp3");
     private Buttons musicOn = new Buttons(new GreenfootImage("musicon.png"));
     private Buttons musicOff = new Buttons(new GreenfootImage("musicoff.png"));
+    
+    //Keep track of games that have been played
+    //Order of games is Memory Game, RPS, Jackpot, HangMan
+    public static boolean[] gamesPlayed = new boolean[4];
     /**
      * Constructor for objects of class Title.
      * 
@@ -35,6 +39,12 @@ public class Title extends World
         addObject(exitButton, 780, 400);
         
         addObject(musicOff, 930, 30);
+        
+        //No games played yet
+        for(boolean played : gamesPlayed)
+        {
+            played = false;
+        }
     }
     
     public void act()
@@ -45,7 +55,7 @@ public class Title extends World
         }
         if(Greenfoot.mouseClicked(achievementsButton)) {
             click.play(); 
-            //Greenfoot.setWorld(new Achievements());
+            Greenfoot.setWorld(new Achievements());
         }
         if(Greenfoot.mouseClicked(inventoryButton)) {
             click.play(); 

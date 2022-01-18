@@ -170,6 +170,9 @@ public class RockPaperScissor extends World
         removeObject(rock);
         removeObject(paper);
         removeObject(scissors);
+        
+        //Set game as played
+        Title.gamesPlayed[1] = true;
     }
     
     public void act()

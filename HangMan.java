@@ -101,6 +101,8 @@ public class HangMan extends World
                     Buttons winScreen = new Buttons(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
                     addObject(GameHall.backtoarcade, 810, 300);
+                    //Set game as played
+                    Title.gamesPlayed[3] = true;
                 }
             }
         }
@@ -137,6 +139,9 @@ public class HangMan extends World
                         showLetter(i, Color.RED);
                     } 
                     addObject(GameHall.backtotitle, 810, 300);
+                    
+                    //Set game as played
+                    Title.gamesPlayed[3] = true;
                     break;
             }
         }
