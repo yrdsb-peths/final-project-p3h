@@ -66,7 +66,8 @@ public class Title extends World
         }
         if(Greenfoot.mouseClicked(exitButton)) {
             click.play();
-            //addObject(exitScreen, getWidth()/2+50, getHeight()/2+15);
+            removeObjects(getObjects(null));
+            setBackground(new GreenfootImage("ExitScreen.png"));
             bgm.pause();
             Greenfoot.stop();
         }
