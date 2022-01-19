@@ -45,7 +45,7 @@ public class HangMan extends World
         int firstX = getWidth()/2 - word.length() * 10 - 30; // x-coordinate of the first underline
         for(int i=0; i<word.length(); i++)
         {
-            Buttons underline = new Buttons(new GreenfootImage("_", 42, Color.BLACK, new Color(0,0,0,0)));
+            Picture underline = new Picture(new GreenfootImage("_", 42, Color.BLACK, new Color(0,0,0,0)));
             addObject(underline, firstX + 36 * i, getHeight() - 50);
         }
         

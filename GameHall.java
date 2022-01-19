@@ -103,7 +103,7 @@ public class GameHall extends World
     public void drawPauseMenu(){
         removeObjects(getObjects(null));
    
-        addObject(new Buttons(new GreenfootImage("menuscreen.png")), 480, 270);
+        addObject(new Picture(new GreenfootImage("menuscreen.png")), 480, 270);
         addObject(resume, 480, 240);
         if(Title.bgm.isPlaying()) addObject(musicOnMenu, 480, 300);
         else addObject(musicOffMenu, 480, 300);

@@ -12,17 +12,17 @@ public class RockPaperScissor extends World
     private Buttons rock = new Buttons(new GreenfootImage("rockButton.png"));
     private Buttons paper = new Buttons(new GreenfootImage("paperButton.png"));
     private Buttons scissors = new Buttons(new GreenfootImage("scissorsButton.png"));
-    private Buttons computerRock = new Buttons(new GreenfootImage("computerRock.png"));
-    private Buttons computerPaper = new Buttons(new GreenfootImage("computerPaper.png"));
-    private Buttons computerScissors = new Buttons(new GreenfootImage("computerScissors.png"));
+    private Picture computerRock = new Picture(new GreenfootImage("computerRock.png"));
+    private Picture computerPaper = new Picture(new GreenfootImage("computerPaper.png"));
+    private Picture computerScissors = new Picture(new GreenfootImage("computerScissors.png"));
     
     private String playerWonRound = "You win this round!";
     private String computerWonRound = "You lost this round";
     private String playerTie = "It's a tie!";
     
-    private Buttons winString = new Buttons(new GreenfootImage(playerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
-    private Buttons loseString = new Buttons(new GreenfootImage(computerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
-    private Buttons tieString = new Buttons(new GreenfootImage(playerTie, 40, Color.BLACK, new Color(0,0,0,0)));
+    private Picture winString = new Picture(new GreenfootImage(playerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
+    private Picture loseString = new Picture(new GreenfootImage(computerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
+    private Picture tieString = new Picture(new GreenfootImage(playerTie, 40, Color.BLACK, new Color(0,0,0,0)));
     
     private String userInput = "";
     private String computerInput;

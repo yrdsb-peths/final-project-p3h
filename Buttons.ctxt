@@ -3,4 +3,6 @@ comment0.target=Buttons
 comment0.text=\r\n\ This\ class\ creates\ the\ buttons\ that\ the\ players\ interact\ with\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=img
 comment1.target=Buttons(greenfoot.GreenfootImage)
-numComments=2
+comment2.params=
+comment2.target=void\ act()
+numComments=3
