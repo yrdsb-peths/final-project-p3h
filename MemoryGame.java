@@ -16,7 +16,11 @@ public class MemoryGame extends World
     private int timer = 0; //show images while timer>0
     private int pauseTime = 50; //number of time the player can memorize the cards
     
-    private SimpleTimer timeSec = new SimpleTimer(); //timer to count amount of seconds
+    public static SimpleTimer timeSec = new SimpleTimer(); //timer to count amount of seconds
+    
+    private Color yellow = new Color(255, 222, 89);
+    
+    public static boolean timeBelow30 = false;
     public MemoryGame()
     {    
         super(960, 540, 1);
@@ -97,8 +101,14 @@ public class MemoryGame extends World
                             addObject(GameHall.backtoarcade, 750, 450);
                             Title.winSound.play();
                             addObject(new Buttons(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
-                            ,26,Color.BLACK, new Color(0,0,0,0))), 750, 400);
+                            ,26, yellow, new Color(0,0,0,0))), 750, 400);
                             GoldenTickets.addTickets(20);
+                            
+                            //Check if time is below 30 seconds
+                            if(timeSec.millisElapsed()/1000 <= 30)
+                            {
+                                timeBelow30 = true;
+                            }
                             
                             //Set this game as played
                             Title.gamesPlayed[0] = true;

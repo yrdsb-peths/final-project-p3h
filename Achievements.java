@@ -11,7 +11,7 @@ public class Achievements extends World
     //Greyed Out Achievements
     public final int fg_FULL = 1;
     public final int ag_FULL = 5;
-    public final int gt100_FULL = 100;
+    public final int gt100_FULL = 150;
     public final int gt200_FULL = 200;
     public final int gp_FULL = 1;
     public final int mg_FULL = 1;
@@ -20,7 +20,7 @@ public class Achievements extends World
     
     public Achievement fg = new Achievement(new GreenfootImage("Achievement-FG.png"), 0, fg_FULL);
     public Achievement ag = new Achievement(new GreenfootImage("Achievement-AG.png"), 0, ag_FULL);
-    public Achievement gt100 = new Achievement(new GreenfootImage("Achievement-GT100.png"), 0, gt100_FULL);
+    public Achievement gt150 = new Achievement(new GreenfootImage("Achievement-GT150.png"), 0, gt100_FULL);
     public Achievement gt200 = new Achievement(new GreenfootImage("Achievement-GT200.png"), 0, gt200_FULL);
     public Achievement gp = new Achievement(new GreenfootImage("Achievement-GP.png"), 0, gp_FULL);
     public Achievement mg = new Achievement(new GreenfootImage("Achievement-MG.png"), 0, mg_FULL);
@@ -40,12 +40,12 @@ public class Achievements extends World
         //Set up greyed achievements 
         addObject(fg, 263, 183);
         addObject(ag, 263, 276);
-        addObject(gt100, 263, 370);
+        addObject(gt150, 263, 370);
         addObject(gt200, 263, 464);
-        addObject(gp, 690, 183);
-        addObject(mg, 690, 276);
-        addObject(fi, 690, 370);
-        addObject(ai, 690, 464);
+        addObject(gp, 689, 183);
+        addObject(mg, 689, 276);
+        addObject(fi, 689, 370);
+        addObject(ai, 689, 464);
         addObject(backtotitle, 520, 100);
         
         //Show latest achievements
@@ -54,7 +54,10 @@ public class Achievements extends World
     
     public void act()
     {
-        
+        if(Greenfoot.mouseClicked(backtotitle))
+        {
+            Greenfoot.setWorld(new Title());
+        }
     }
     
     public void addAchievements()
@@ -68,18 +71,45 @@ public class Achievements extends World
         {
             removeObject(ag);
         }
-        if(gt >= 100)
+        else
         {
-            removeObject(gt100);
+            ag.setProgress(numGamesPlayed());
+        }
+        if(gt >= 150)
+        {
+            removeObject(gt150);
+        }
+        else
+        {
+            gt150.setProgress(gt);
         }
         if(gt >= 200)
         {
             removeObject(gt200);
         }
-        
-        if(Greenfoot.mouseClicked(backtotitle))
+        else
         {
-            Greenfoot.setWorld(new Title());
+            gt200.setProgress(gt);
+        }
+        if(Jackpot.gainedWin)
+        {
+            removeObject(gp);
+        }
+        if(MemoryGame.timeBelow30)
+        {
+            removeObject(mg);
+        }
+        if(Shop.boughtItems.size() >= 1)
+        {
+            removeObject(fi);
+        }
+        if(Shop.boughtItems.size() == 6)
+        {
+            removeObject(ai);
+        }
+        else
+        {
+            ai.setProgress(Shop.boughtItems.size());
         }
     }
     
@@ -107,5 +137,19 @@ public class Achievements extends World
             }
         }
         return true;
+    }
+    
+    //Check the number of games played
+    private int numGamesPlayed()
+    {
+        int counter = 0;
+        for(boolean game: Title.gamesPlayed)
+        {
+            if(game)
+            {
+                counter++;
+            }
+        }
+        return counter;
     }
 }
