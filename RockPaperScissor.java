@@ -149,13 +149,6 @@ public class RockPaperScissor extends World
         }
     }
     
-    // Check if player or computer wins reached a total of 5
-    private boolean checkGameEnd()
-    {
-        if(playerWins.getScore() >= 5 || computerWins.getScore() >= 5) return true;
-        return false;
-    }
-    
     // If the game ends, end screen pops up
     private void gameEndScreen()
     {
@@ -219,7 +212,7 @@ public class RockPaperScissor extends World
         computerInput = "";
         
         //Check if player or computer hits 5 points first, then pop up game end screen
-        if(checkGameEnd())
+        if(playerWins.getScore() >= 5 || computerWins.getScore() >= 5)
         {
             addObject(GameHall.backtoarcade, 495, 390);
             gameEndScreen();
