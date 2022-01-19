@@ -23,7 +23,7 @@ public class Inventory extends World
     {    
         super(960, 540, 1); 
         
-        addObject(GameHall.backtotitle, 100, 30);
+        addObject(GameHall.backtotitle, 840, 80);
         
         // Add buttons into HashMap
         itemImg.put(50, new Picture(new GreenfootImage("i-goldenEgg.png")));
@@ -45,8 +45,8 @@ public class Inventory extends World
         
         // Find all the bought items and show it in the inventory
         if(prices.length == 0){ // if the player didn't buy anything yet
-            Picture noItems = new Picture(new GreenfootImage("You haven't bought anything yet", 42, Color.BLACK, new Color(0,0,0,0)));
-            addObject(noItems, 480, 160);
+            Picture noItems = new Picture(new GreenfootImage("You haven't bought anything yet", 32, new Color(255, 222, 89), new Color(0,0,0,0)));
+            addObject(noItems, 510, 80);
         }
         for(int n : prices) // add the prices into the ArrayList to keep the correct order
         {

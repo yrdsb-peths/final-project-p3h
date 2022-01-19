@@ -45,12 +45,12 @@ public class Shop extends World
         int column = 0;
         for(Buttons product : items.keySet())
         {
-            int startX = getWidth()/2 - 200;
+            int startX = getWidth()/2 - 133;
             if(column < 3){
-                addObject(product, startX + column%3 * 200, 205);
+                addObject(product, startX + column%3 * 230, 145);
             }
             else{
-                addObject(product, startX + column%3 * 200, 420);
+                addObject(product, startX + column%3 * 230, 400);
             }
             column++;
         }
@@ -58,8 +58,8 @@ public class Shop extends World
     
     public void act()
     {
-        addObject(GameHall.currency, 830, 520); 
-        addObject(GameHall.backtoarcade, 100, 510);
+        addObject(GameHall.currency, 125, 450); 
+        addObject(GameHall.backtoarcade, 125, 500);
         
         // If user pressed on any shop item
         if(Greenfoot.mouseClicked(goldenEgg)){
