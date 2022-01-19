@@ -99,7 +99,7 @@ public class HangMan extends World
                     }
                     GoldenTickets.addTickets(20); // Player earns 20 tickets
                     //Set win screen
-                    Buttons winScreen = new Buttons(new GreenfootImage("hangman-winScreen.png"));
+                    Picture winScreen = new Picture(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
                     addObject(GameHall.backtoarcade, 810, 300);
                     //Set game as played

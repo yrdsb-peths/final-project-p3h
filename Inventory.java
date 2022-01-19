@@ -45,7 +45,7 @@ public class Inventory extends World
         
         // Find all the bought items and show it in the inventory
         if(prices.length == 0){ // if the player didn't buy anything yet
-            Buttons noItems = new Buttons(new GreenfootImage("You haven't bought anything yet", 42, Color.BLACK, new Color(0,0,0,0)));
+            Picture noItems = new Picture(new GreenfootImage("You haven't bought anything yet", 42, Color.BLACK, new Color(0,0,0,0)));
             addObject(noItems, 480, 160);
         }
         for(int n : prices) // add the prices into the ArrayList to keep the correct order
