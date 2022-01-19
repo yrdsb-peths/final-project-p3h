@@ -65,58 +65,68 @@ public class Jackpot extends World
     {
         if(Greenfoot.mouseClicked(spin))
         {
-            //Deducts cost to run Jackpot
-            GoldenTickets.addTickets(-5);     
-            Title.cashSound.play();
-            
-            removeObject(spinW);
-            removeObject(spinI);
-            removeObject(spinN);
-            
-            //Display "spinning" pictures so that it looks like the spinner is moving
-            for(int i = 0; i < 3; i++)
+            if(GoldenTickets.getTickets() >= 5)
             {
-                addObject(new JackpotTile(spinner[i][5]), 150 + i * 204, 318);
+                //Deducts cost to run Jackpot
+                GoldenTickets.addTickets(-5);     
+                Title.cashSound.play();
+                
+                removeObject(spinW);
+                removeObject(spinI);
+                removeObject(spinN);
+                
+                //Display "spinning" pictures so that it looks like the spinner is moving
+                for(int i = 0; i < 3; i++)
+                {
+                    addObject(new JackpotTile(spinner[i][5]), 150 + i * 204, 318);
+                }
+                Greenfoot.delay(20);
+                //Remove the spinning pictures
+                for(int i = 0; i < 3; i++)
+                {
+                    removeObjects(getObjectsAt(150 + i * 204, 318, null));
+                }
+                
+                //Generate a random tile in each column and use the array nums 
+                //to keep track of the columns selected(will use later)
+                int[] nums = new int[3];
+                for(int i = 0; i < 3; i++)
+                {
+                    int rand = Greenfoot.getRandomNumber(5);
+                    nums[i] = rand;
+                    addObject(new JackpotTile(spinner[i][rand]), 150 + i * 204, 318);
+                }
+                
+                //Use array nums to determine the prize/tickets deducted
+                //3 Xs = no prize nor loss
+                if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0)
+                {
+                    GoldenTickets.addTickets(50);
+                    gainedWin = true;
+                }
+                if(nums[0] == 1 && nums[1] == 1 && nums[2] == 1)
+                {
+                    GoldenTickets.addTickets(5);
+                }
+                else if(nums[0] == 2 && nums[1] == 2 && nums[2] == 2)
+                {
+                    GoldenTickets.addTickets(15);
+                }
+                else if(nums[0] == 4 && nums[1] == 4 && nums[2] == 4)
+                {
+                    if(GoldenTickets.getTickets() >= 10)
+                    {
+                        GoldenTickets.addTickets(-10);
+                    }
+                    else
+                    {
+                        GoldenTickets.setTickets(0);
+                    }
+                }
+                
+                //Set game as played
+                Title.gamesPlayed[2] = true;
             }
-            Greenfoot.delay(20);
-            //Remove the spinning pictures
-            for(int i = 0; i < 3; i++)
-            {
-                removeObjects(getObjectsAt(150 + i * 204, 318, null));
-            }
-            
-            //Generate a random tile in each column and use the array nums 
-            //to keep track of the columns selected(will use later)
-            int[] nums = new int[3];
-            for(int i = 0; i < 3; i++)
-            {
-                int rand = Greenfoot.getRandomNumber(5);
-                nums[i] = rand;
-                addObject(new JackpotTile(spinner[i][rand]), 150 + i * 204, 318);
-            }
-            
-            //Use array nums to determine the prize/tickets deducted
-            //3 Xs = no prize nor loss
-            if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0)
-            {
-                GoldenTickets.addTickets(50);
-                gainedWin = true;
-            }
-            if(nums[0] == 1 && nums[1] == 1 && nums[2] == 1)
-            {
-                GoldenTickets.addTickets(5);
-            }
-            else if(nums[0] == 2 && nums[1] == 2 && nums[2] == 2)
-            {
-                GoldenTickets.addTickets(15);
-            }
-            else if(nums[0] == 4 && nums[1] == 4 && nums[2] == 4)
-            {
-                GoldenTickets.addTickets(-10);
-            }
-            
-            //Set game as played
-            Title.gamesPlayed[2] = true;
         }
         GameHall.checkPause();
     }

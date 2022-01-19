@@ -23,7 +23,7 @@ public class GoldenTickets extends Actor
         return numOfTickets;
     }
     
-    public void setTickets(int num)
+    public static void setTickets(int num)
     {
         numOfTickets = num;
     }
