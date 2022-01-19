@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Buttons extends Actor
 {
-    public static boolean shopExists = false;
-    public GreenfootImage img;
-    public boolean ifMoved = false;
-    public boolean firstMove = true;
+    public static boolean shopExists = false; //check if Shop world already exists
+    public GreenfootImage img; // image of Button
+    public boolean ifMoved = false; // If the player moved from the button or not
+    public boolean firstMove = true; // If the player hovers over the same button for two times consecutively, this would be false
     
     public Buttons(GreenfootImage img){
         this.img = img;
@@ -25,7 +25,8 @@ public class Buttons extends Actor
                 firstMove = false;
                 ifMoved = true;
                 Title.cursor.play();
-                img.scale(img.getWidth() + 5, img.getHeight() +5);
+                // Mouse hovers, then button enlarges
+                img.scale(img.getWidth() + 5, img.getHeight() +5); 
                 setImage(img);
             }
         }
@@ -34,6 +35,7 @@ public class Buttons extends Actor
             firstMove = true;
             if(ifMoved){
                 ifMoved = false;
+                // Mouse leaves button, then image returns to original size
                 img.scale(img.getWidth() - 5, img.getHeight() - 5);
                 setImage(img);
             }

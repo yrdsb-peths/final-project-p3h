@@ -9,28 +9,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RockPaperScissor extends World
 {
+    // Buttons for player to interact with
     private Buttons rock = new Buttons(new GreenfootImage("rockButton.png"));
     private Buttons paper = new Buttons(new GreenfootImage("paperButton.png"));
     private Buttons scissors = new Buttons(new GreenfootImage("scissorsButton.png"));
+    // Computer images for rock, paper, scissors
     private Picture computerRock = new Picture(new GreenfootImage("computerRock.png"));
     private Picture computerPaper = new Picture(new GreenfootImage("computerPaper.png"));
     private Picture computerScissors = new Picture(new GreenfootImage("computerScissors.png"));
     
+    // Strings to be showed to the player when they win/tie/lose
     private String playerWonRound = "You win this round!";
     private String computerWonRound = "You lost this round";
     private String playerTie = "It's a tie!";
-    
+    // Initialize actors for strings above
     private Picture winString = new Picture(new GreenfootImage(playerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
     private Picture loseString = new Picture(new GreenfootImage(computerWonRound, 40, Color.BLACK, new Color(0,0,0,0)));
     private Picture tieString = new Picture(new GreenfootImage(playerTie, 40, Color.BLACK, new Color(0,0,0,0)));
     
+    // Stores the user choice and computer choice for the game
     private String userInput = "";
     private String computerInput;
     
+    // Number of wins for the player vs the computer
     private Counter playerWins = new Counter();
     private Counter computerWins = new Counter();
     
-    private boolean ticketsAdded = false;
+    private boolean ticketsAdded = false; // boolean to make sure tickets are only added once
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -47,6 +52,7 @@ public class RockPaperScissor extends World
         addObject(GameHall.currency, 150, 520);
     }
     
+    // Gets the computer input (random rock, paper or scissors)
     private String getComputerInput()
     {
         Random r = new Random();
@@ -62,13 +68,14 @@ public class RockPaperScissor extends World
         return "scissors";
     }
     
+    // According to computer input, get the corresponding computer image
     private void getComputerImage(String str)
     {
         if(str.equals("rock")) addObject(computerRock, 490, 165);
         else if(str.equals("paper")) addObject(computerPaper,490, 165);
         else if(str.equals("scissors")) addObject(computerScissors, 490, 165);
     }
-    
+    // After delay, remove the computer image
     private void removeCompImg()
     {
         removeObject(computerRock);
@@ -76,6 +83,7 @@ public class RockPaperScissor extends World
         removeObject(computerScissors);
     }
     
+    // Get the winner: player or computer
     private String getWinner(String user, String computer)
     {
         if(user.equals("rock"))
@@ -108,6 +116,7 @@ public class RockPaperScissor extends World
         return playerTie;
     }
     
+    // Checks if player won, computer won, or tie. 
     private void checkWin(String str)
     {
         if(str.equals(playerWonRound))
@@ -140,32 +149,32 @@ public class RockPaperScissor extends World
         }
     }
     
+    // Check if player or computer wins reached a total of 5
     private boolean checkGameEnd()
     {
         if(playerWins.getScore() >= 5 || computerWins.getScore() >= 5) return true;
         return false;
     }
     
+    // If the game ends, end screen pops up
     private void gameEndScreen()
     {
-        if(playerWins.getScore() >= 5)
+        if(playerWins.getScore() >= 5) // player wins
         {
             setBackground(new GreenfootImage("rps-WinScreen.png"));
             if(!ticketsAdded)
             {
                 GoldenTickets.addTickets(20);
             }
-            
             ticketsAdded = true;
         }
-        else
+        else // computer wins
         {
             setBackground(new GreenfootImage("rps-LoseScreen.png")); 
             if(!ticketsAdded)
             {
                 GoldenTickets.addTickets(-10);
             }
-            
             ticketsAdded = true;
         }
         //remove player interactive buttons
@@ -186,6 +195,7 @@ public class RockPaperScissor extends World
         // Random computer rock/paper/scissors
         computerInput = getComputerInput();
         
+        // Player chooses rock, paper, or scissors
         if(Greenfoot.mouseClicked(rock))
         {
             userInput = "rock";
@@ -204,14 +214,13 @@ public class RockPaperScissor extends World
             String str = getWinner(userInput, computerInput);
             checkWin(str);
         }
-    
+        // Reset user & computer input
         userInput = "";
         computerInput = "";
         
-        //Check if player or computer hits 5 points first, then pop out game end screen
+        //Check if player or computer hits 5 points first, then pop up game end screen
         if(checkGameEnd())
         {
-            //Add back to title button
             addObject(GameHall.backtoarcade, 495, 390);
             gameEndScreen();
             GameHall.checkPause();

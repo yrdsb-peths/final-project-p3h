@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * This is the title screen.
+ * This is the title screen that the player first sees.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class Title extends World
 {
+    // Buttons on Title screen: Game start, Achievements, Inventory, and Exit
     private Buttons playButton = new Buttons(new GreenfootImage("PlayButton.png"));
     private Buttons achievementsButton = new Buttons(new GreenfootImage("AchievementsButton.png"));
     private Buttons inventoryButton = new Buttons(new GreenfootImage("InventoryButton.png"));
@@ -20,6 +21,7 @@ public class Title extends World
     public static GreenfootSound winSound = new GreenfootSound("win-sound.mp3");
     public static GreenfootSound loseSound = new GreenfootSound("lose-sound.mp3");
     public static GreenfootSound cashSound = new GreenfootSound("cash-sound.mp3");
+    // Music On/Off buttons
     private Buttons musicOn = new Buttons(new GreenfootImage("musicon.png"));
     private Buttons musicOff = new Buttons(new GreenfootImage("musicoff.png"));
     
@@ -36,11 +38,11 @@ public class Title extends World
         super(960, 540, 1); 
         setBackground(new GreenfootImage("TitleScreen.png"));
         
+        // Add buttons into title
         addObject(playButton, 480, 300);
         addObject(achievementsButton, 180, 400);
         addObject(inventoryButton, 480, 400);
         addObject(exitButton, 780, 400);
-        
         addObject(musicOff, 930, 30);
         
         //No games played yet
@@ -50,8 +52,10 @@ public class Title extends World
         }
     }
     
+    // Act() method is called when the player presses Run
     public void act()
     {
+        // Each button transports the player to a new World()
         if(Greenfoot.mouseClicked(playButton)) {
             click.play();
             Greenfoot.setWorld(new GameHall());
@@ -71,7 +75,7 @@ public class Title extends World
             bgm.pause();
             Greenfoot.stop();
         }
-        
+        // If player clicked on the music on/off switch
         if(Greenfoot.mouseClicked(musicOn)){
             bgm.pause();
             addObject(musicOff, 930, 30);

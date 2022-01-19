@@ -11,6 +11,4 @@ comment4.params=
 comment4.target=boolean\ getSolved()
 comment5.params=showCard
 comment5.target=void\ updateImage(boolean)
-comment6.params=
-comment6.target=int\ getNumberOfIDs()
-numComments=7
+numComments=6

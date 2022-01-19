@@ -2,21 +2,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
 /**
- * Write a description of class HangMan here.
+ * This is the Hangman mini game. The player wins if they guessed
+ * all the correct letters in a random word.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class HangMan extends World
 {
+    //Initialize the list of words to choose from and the word chosen
     private ArrayList<String> listOfWords = new ArrayList<String>();
     private String word;
     
+    //All 26 letters of the alphabet
     private Letter[] letters = new Letter[26];
+    // Number of letters the player guessed correctly vs. wrongly
     private int correct;
     private int wrong;
-    
-    private boolean gameOver;
     /**
      * Constructor for objects of class HangMan.
      * 
@@ -33,20 +35,20 @@ public class HangMan extends World
         catch(Exception e) {
         }
         
-        //Add letters
+        //Add letters to world
         for(int i=0; i<26; i++) 
         {
             addObject(letters[i] = new Letter(i), 250 + 38*(i%13), 410 + 30*(i/13));
         }
         
-        //Get random word and add the underlines
+        //Get a random word and add the underlines for the word
         Random r = new Random();
         word = listOfWords.get(r.nextInt(listOfWords.size()));
         int firstX = getWidth()/2 - word.length() * 10 - 30; // x-coordinate of the first underline
         for(int i=0; i<word.length(); i++)
         {
             Picture underline = new Picture(new GreenfootImage("_", 42, Color.BLACK, new Color(0,0,0,0)));
-            addObject(underline, firstX + 36 * i, getHeight() - 50);
+            addObject(underline, firstX + 36 * i, 490);
         }
         
         //Add Golden tickets Counter
@@ -65,17 +67,15 @@ public class HangMan extends World
             if(actor != null && actor instanceof Letter)letterCheckClick((Letter)actor);
         }
         
+        // Check if player clicked on backtoarcade after finishing the game
         GameHall.checkPause();
     }
     
-    private void letterCheckKey(String key)
-    {
-        letterCheckClick(letters[(int)key.charAt(0)-65]);
-    }
-    
+    // This method checks if the letter: 1. Was picked or not 2. In the word or not
+    // 3. Was the last letter of the word or the last guess
     private void letterCheckClick(Letter theLetter)
     {
-        //check if player choosed new letter or one that was already picked
+        //check if the player choosed new letter or not
         if(theLetter.wasPicked()) return;
         theLetter.pickImage();
         
@@ -84,21 +84,21 @@ public class HangMan extends World
         boolean inWord = false;
         for(int i=0; i<word.length(); i++)
         {
-            if(Character.toLowerCase(letter) == word.charAt(i))
+            if(Character.toLowerCase(letter) == word.charAt(i)) //found letter
             {
                 Title.winSound.play();
-                showLetter(i, Color.BLACK);
-                Greenfoot.delay(1);
-                inWord = true;
-                correct++;
-                if(correct == word.length())
+                showLetter(i, Color.BLACK); // shows letter on underline
+                Greenfoot.delay(1); // time to show the letter appearing
+                inWord = true; // letter exists in the word
+                correct++; // number of correct letters
+                if(correct == word.length()) // finished all letters in the word
                 {
-                    gameOver = true;
-                    for(int j=0; j<26; j++)
+                    for(int j=0; j<26; j++) // remove 26 letters
                     {
-                        removeObject(letters[j]);
+                        removeObject(letters[j]); 
                     }
-                    GoldenTickets.addTickets(20);
+                    GoldenTickets.addTickets(20); // Player earns 20 tickets
+                    //Set win screen
                     Buttons winScreen = new Buttons(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
                     addObject(GameHall.backtoarcade, 810, 300);
@@ -107,10 +107,10 @@ public class HangMan extends World
                 }
             }
         }
-        if(!inWord)
+        if(!inWord) //letter does not exist in word
         {
             Title.loseSound.play();
-            wrong++;
+            wrong++; // Number of wrong guesses
             switch(wrong)
             {
                 case 1:
@@ -128,15 +128,13 @@ public class HangMan extends World
                 case 5:
                     setBackground(new GreenfootImage("hangman-5.png"));
                     break;
-                case 6: 
+                case 6: // If the player guessed the wrong letter 6 times, they lose
                     setBackground(new GreenfootImage("hangman-6.png"));
-                    gameOver = true;
-                    for(int i=0; i<26; i++)
+                    for(int i=0; i<26; i++) // remove 26 letters
                     {
                         removeObject(letters[i]);
                     }
-                    
-                    for(int i=0; i<word.length(); i++)
+                    for(int i=0; i<word.length(); i++) // shows the correct word
                     {
                         showLetter(i, Color.RED);
                     } 
@@ -149,22 +147,18 @@ public class HangMan extends World
         }
     }
     
+    // This method shows the letters in the word onto the underlines
     private void showLetter(int index, Color color)
     {
         String letter = word.substring(index, index+1);
-        Actor actor = getGenericActor();
-        actor.setImage(getLetterImage(letter, color));
+        Picture pic = new Picture((getLetterImage(letter, color)));
         int firstX = getWidth()/2 - word.length()*10 - 30;
-        addObject(actor, firstX + 36*index, getHeight()-45);
+        addObject(pic, firstX + 36*index, getHeight()-45);
     }
     
+    // This method returns the GreenfootImage of the letter that would be shown on the underlines
     private GreenfootImage getLetterImage(String letter, Color color)
     {
         return new GreenfootImage(letter, 42, color, new Color(0,0,0,0));
-    }
-    
-    private Actor getGenericActor()
-    {
-        return new Actor(){};
     }
 }
