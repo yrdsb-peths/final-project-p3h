@@ -221,7 +221,7 @@ public class RockPaperScissor extends World
         //Check if player or computer hits 5 points first, then pop up game end screen
         if(playerWins.getScore() >= 5 || computerWins.getScore() >= 5)
         {
-            addObject(GameHall.backToArcade, 495, 390);
+            addObject(GameHall.backToArcade, 495, 393);
             gameEndScreen();
             GameHall.checkPause();
         }
