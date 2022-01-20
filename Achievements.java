@@ -27,7 +27,7 @@ public class Achievements extends World
     public Achievement fi = new Achievement(new GreenfootImage("Achievement-FI.png"), 0, fi_FULL);
     public Achievement ai = new Achievement(new GreenfootImage("Achievement-AI.png"), 0, ai_FULL);
     
-    public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
+    public static Buttons backToTitle = new Buttons(new GreenfootImage("BackToTitleButton.png"));
     /**
      * Constructor for objects of class Achievements.
      * 
@@ -46,7 +46,7 @@ public class Achievements extends World
         addObject(mg, 689, 276);
         addObject(fi, 689, 370);
         addObject(ai, 689, 464);
-        addObject(backtotitle, 520, 100);
+        addObject(backToTitle, 520, 100);
         
         //Show latest achievements
         addAchievements();
@@ -54,7 +54,7 @@ public class Achievements extends World
     
     public void act()
     {
-        if(Greenfoot.mouseClicked(backtotitle))
+        if(Greenfoot.mouseClicked(backToTitle))
         {
             Title.click.play();
             Greenfoot.setWorld(new Title());

@@ -18,11 +18,11 @@ public class GameHall extends World
     private Buttons shop = new Buttons(new GreenfootImage("ShopButton.png"));
     private Buttons inventory = new Buttons(new GreenfootImage("InventoryButton.png"));
     
-    public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
-    public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
-    public static Buttons backtoarcade = new Buttons(new GreenfootImage("BackToArcade.png"));
-    public Buttons musicOnMenu = new Buttons(new GreenfootImage("Menu-musicOn.png"));
-    public Buttons musicOffMenu = new Buttons(new GreenfootImage("Menu-musicOff.png"));
+    public static Buttons resume = new Buttons(new GreenfootImage("ResumeButton.png"));
+    public static Buttons backToTitle = new Buttons(new GreenfootImage("BackToTitleButton.png"));
+    public static Buttons backToArcade = new Buttons(new GreenfootImage("BackToArcadeButton.png"));
+    public Buttons musicOnMenu = new Buttons(new GreenfootImage("Menu-MusicOnButton.png"));
+    public Buttons musicOffMenu = new Buttons(new GreenfootImage("Menu-MusicOffButton.png"));
     
     // Amount of Golden Tickets the player has
     public static GoldenTickets currency = new GoldenTickets();
@@ -71,6 +71,12 @@ public class GameHall extends World
             Title.click.play();
             Greenfoot.setWorld(new Jackpot());
         }
+        //Achievements
+        if(Greenfoot.mouseClicked(achievements))
+        {
+            Title.click.play();
+            Greenfoot.setWorld(new Achievements());
+        }
         // Shop
         if(Greenfoot.mouseClicked(shop))
         {
@@ -107,11 +113,11 @@ public class GameHall extends World
         removeObjects(getObjects(null)); //removes all buttons on GameHall
         
         // Pause menu screen buttons
-        addObject(new Picture(new GreenfootImage("menuscreen.png")), 480, 270);
+        addObject(new Picture(new GreenfootImage("MenuScreen.png")), 480, 270);
         addObject(resume, 480, 240);
         if(Title.bgm.isPlaying()) addObject(musicOnMenu, 480, 300);
         else addObject(musicOffMenu, 480, 300);
-        addObject(backtotitle, 480, 360);
+        addObject(backToTitle, 480, 360);
     }
     
     // This method checks whether the player presses resume, backtotitle, or backtoarcade
@@ -121,12 +127,12 @@ public class GameHall extends World
             Title.click.play();
             Greenfoot.setWorld(new GameHall());
         }
-        if(Greenfoot.mouseClicked(backtotitle))
+        if(Greenfoot.mouseClicked(backToTitle))
         {
             Title.click.play();
             Greenfoot.setWorld(new Title());
         }
-        if(Greenfoot.mouseClicked(backtoarcade))
+        if(Greenfoot.mouseClicked(backToArcade))
         {
             Title.click.play();
             Greenfoot.setWorld(new GameHall());

@@ -13,17 +13,26 @@ public class Shop extends World
     public static Shop shop;
     
     // All items in the shop corresponding to a specific price
-    public HashMap<Buttons,Integer> items = new HashMap<Buttons,Integer>();
+    public HashMap<ShopItem,Integer> items = new HashMap<ShopItem,Integer>();
     // All items in the shop that are already bought by the player
     public static List<Integer> boughtItems = new ArrayList<Integer>();
+        
+    //Item Prices
+    private final int doraemonP = 20;
+    private final int minionsP = 25;
+    private final int pusheenP = 30;
+    private final int bulbasaurP = 35;
+    private final int pikachuP = 40;
+    private final int bareBearsP = 50;
     
     // Add items
-        Buttons goldenEgg = new Buttons(new GreenfootImage("s-goldenEgg.png"));
-        Buttons laptop = new Buttons(new GreenfootImage("s-laptop.png"));
-        Buttons stuffy = new Buttons(new GreenfootImage("s-stuffy.png"));
-        Buttons mysteryBox = new Buttons(new GreenfootImage("s-mysteryBox.png"));
-        Buttons garlicBread = new Buttons(new GreenfootImage("s-garlicBread.png"));
-        Buttons phone = new Buttons(new GreenfootImage("s-phone.png"));
+        ShopItem doraemon = new ShopItem(new GreenfootImage("Doraemon.png"), doraemonP);
+        ShopItem minions  = new ShopItem(new GreenfootImage("Minions.jpg"), minionsP);
+        ShopItem pusheen = new ShopItem(new GreenfootImage("Pusheen.png"), pusheenP);
+        ShopItem bulbasaur = new ShopItem(new GreenfootImage("Bulbasaur.png"), bulbasaurP);
+        ShopItem pikachu = new ShopItem(new GreenfootImage("Pikachu.png"), pikachuP);
+        ShopItem bareBears = new ShopItem(new GreenfootImage("BareBears.jpg"), bareBearsP);
+        
     /**
      * Constructor for objects of class Shop.
      * 
@@ -34,18 +43,18 @@ public class Shop extends World
         shop = this; // set reference to this world
  
         // add shop items & prices into HashMap
-        items.put(goldenEgg, 50);
-        items.put(laptop, 20);
-        items.put(stuffy, 10);
-        items.put(mysteryBox, 15);
-        items.put(garlicBread, 5);
-        items.put(phone, 30);
+        items.put(pusheen, pusheenP);
+        items.put(pikachu, pikachuP);
+        items.put(bulbasaur, bulbasaurP);
+        items.put(bareBears, bareBearsP);
+        items.put(doraemon, doraemonP);
+        items.put(minions, minionsP);
         
         //add shop items onto world
         int column = 0;
-        for(Buttons product : items.keySet())
+        for(ShopItem product : items.keySet())
         {
-            int startX = getWidth()/2 - 133;
+            int startX = getWidth()/2 - 110;
             if(column < 3){
                 addObject(product, startX + column%3 * 230, 145);
             }
@@ -59,41 +68,42 @@ public class Shop extends World
     public void act()
     {
         addObject(GameHall.currency, 125, 450); 
-        addObject(GameHall.backtoarcade, 125, 500);
-        
+        addObject(GameHall.backToArcade, 125, 500);
+                
         // If user pressed on any shop item
-        if(Greenfoot.mouseClicked(goldenEgg)){
-            check(goldenEgg);
+        if(Greenfoot.mouseClicked(pusheen)){
+            check(pusheen);
         }
-        if(Greenfoot.mouseClicked(laptop)){
-            check(laptop);
+        if(Greenfoot.mouseClicked(pikachu)){
+            check(pikachu);
         }
-        if(Greenfoot.mouseClicked(stuffy)){
-            check(stuffy);
+        if(Greenfoot.mouseClicked(bulbasaur)){
+            check(bulbasaur);
         }
-        if(Greenfoot.mouseClicked(garlicBread)){
-            check(garlicBread);
+        if(Greenfoot.mouseClicked(bareBears)){
+            check(bareBears);
         }
-        if(Greenfoot.mouseClicked(phone)){
-            check(phone);
+        if(Greenfoot.mouseClicked(doraemon)){
+            check(doraemon);
         }
-        if(Greenfoot.mouseClicked(mysteryBox)){
-            check(mysteryBox);
+        if(Greenfoot.mouseClicked(minions)){
+            check(minions);
         }
+        
         
         GameHall.checkPause();
     }
     
     // This method checks if the player could buy the item
-    private void check(Buttons button)
+    private void check(ShopItem item)
     {
-         int price = items.get(button);
+        int price = items.get(item);
         if(GoldenTickets.getTickets() >= price) //if # of golden tickets is enough for the item
         {
             Title.cashSound.play();
             GoldenTickets.addTickets(-price); // deduce cost from golden tickets
             boughtItems.add(price); // add the item into list of bought items
-            removeObject(button); // remove item from store
+            item.soldOut(); // set Item as sold out
         }
     }
 }

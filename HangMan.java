@@ -101,7 +101,7 @@ public class HangMan extends World
                     //Set win screen
                     Picture winScreen = new Picture(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
-                    addObject(GameHall.backtoarcade, 810, 300);
+                    addObject(GameHall.backToArcade, 810, 300);
                     //Set game as played
                     Title.gamesPlayed[3] = true;
                 }
@@ -138,7 +138,7 @@ public class HangMan extends World
                     {
                         showLetter(i, Color.RED);
                     } 
-                    addObject(GameHall.backtotitle, 810, 300);
+                    addObject(GameHall.backToTitle, 810, 300);
                     
                     //Set game as played
                     Title.gamesPlayed[3] = true;

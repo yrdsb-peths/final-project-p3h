@@ -101,7 +101,7 @@ public class MemoryGame extends World
                         if (allSolved)
                         {
                             // Win screen
-                            addObject(GameHall.backtoarcade, 750, 450);
+                            addObject(GameHall.backToArcade, 750, 450);
                             Title.winSound.play();
                             addObject(new Picture(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
                             ,26, yellow, new Color(0,0,0,0))), 750, 400);

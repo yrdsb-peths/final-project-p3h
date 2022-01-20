@@ -23,7 +23,7 @@ public class Inventory extends World
     {    
         super(960, 540, 1); 
         
-        addObject(GameHall.backtotitle, 840, 80);
+        addObject(GameHall.backToTitle, 840, 80);
         
         // Add buttons into HashMap
         itemImg.put(50, new Picture(new GreenfootImage("i-goldenEgg.png")));
