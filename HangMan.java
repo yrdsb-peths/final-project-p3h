@@ -138,7 +138,7 @@ public class HangMan extends World
                     {
                         showLetter(i, Color.RED);
                     } 
-                    addObject(GameHall.backToTitle, 810, 300);
+                    addObject(GameHall.backToArcade, 810, 300);
                     
                     //Set game as played
                     Title.gamesPlayed[3] = true;
