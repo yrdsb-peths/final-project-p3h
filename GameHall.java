@@ -8,16 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameHall extends World
 {
+    //Mini game buttons
     private Buttons memoryGame = new Buttons(new GreenfootImage("MemoryGame.png"));
     private Buttons rps = new Buttons(new GreenfootImage("RPS.png"));
     private Buttons jackpot = new Buttons(new GreenfootImage("Jackpot.png"));
     private Buttons hangman = new Buttons(new GreenfootImage("Hangman.png"));
     
+    // Menu, Achievements, Shop, Inventory buttons
     private Buttons pausemenu = new Buttons(new GreenfootImage("MenuButton.png"));
     private Buttons achievements = new Buttons(new GreenfootImage("AchievementsButton.png"));
     private Buttons shop = new Buttons(new GreenfootImage("ShopButton.png"));
     private Buttons inventory = new Buttons(new GreenfootImage("InventoryButton.png"));
-    
+    // Pause menu buttons
     public static Buttons resume = new Buttons(new GreenfootImage("ResumeButton.png"));
     public static Buttons backToTitle = new Buttons(new GreenfootImage("BackToTitleButton.png"));
     public static Buttons backToArcade = new Buttons(new GreenfootImage("BackToArcadeButton.png"));

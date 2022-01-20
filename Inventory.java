@@ -25,16 +25,14 @@ public class Inventory extends World
         
         addObject(GameHall.backToArcade, 840, 80);
         
-        // Add buttons into HashMap
+        // Add inventory items into HashMap
         itemImg.put(Shop.pusheenP, (new InventoryItem(new GreenfootImage("Pusheen.png"), "Pusheen", Shop.pusheenP)));
         itemImg.put(Shop.doraemonP, (new InventoryItem(new GreenfootImage("Doraemon.png"), "Doraemon", Shop.doraemonP)));
         itemImg.put(Shop.minionsP, (new InventoryItem(new GreenfootImage("Minions.jpg"), "Minions", Shop.minionsP)));
         itemImg.put(Shop.bulbasaurP, (new InventoryItem(new GreenfootImage("Bulbasaur.png"), "Bulbasaur", Shop.bulbasaurP)));
         itemImg.put(Shop.pikachuP, (new InventoryItem(new GreenfootImage("Pikachu.png"), "Pikachu", Shop.pikachuP)));
         itemImg.put(Shop.bareBearsP, (new InventoryItem(new GreenfootImage("BareBears.jpg"), "We Bare Bears", Shop.bareBearsP)));
-        
-        
-        
+
         //Initialize array from Shop
         int x = 0;
         for(int n : Shop.boughtItems){
