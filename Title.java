@@ -19,8 +19,8 @@ public class Title extends World
     public static GreenfootSound loseSound = new GreenfootSound("lose-sound.mp3");
     public static GreenfootSound cashSound = new GreenfootSound("cash-sound.mp3");
     // Music On/Off buttons
-    private Buttons musicOn = new Buttons(new GreenfootImage("musicon.png"));
-    private Buttons musicOff = new Buttons(new GreenfootImage("musicoff.png"));
+    private Buttons musicOn = new Buttons(new GreenfootImage("MusicOn.png"));
+    private Buttons musicOff = new Buttons(new GreenfootImage("MusicOff.png"));
     
     //Keep track of games that have been played
     //Order of games is Memory Game, RPS, Jackpot, HangMan

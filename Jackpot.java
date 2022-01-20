@@ -103,6 +103,7 @@ public class Jackpot extends World
                 {
                     GoldenTickets.addTickets(50);
                     gainedWin = true;
+                    
                 }
                 if(nums[0] == 1 && nums[1] == 1 && nums[2] == 1)
                 {
