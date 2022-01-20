@@ -98,7 +98,7 @@ public class Shop extends World
     private void check(ShopItem item)
     {
         int price = items.get(item);
-        if(GoldenTickets.getTickets() >= price) //if # of golden tickets is enough for the item
+        if(GoldenTickets.getTickets() >= price && !item.bought) //if # of golden tickets is enough for the item & item is not bought
         {
             Title.cashSound.play();
             GoldenTickets.addTickets(-price); // deduce cost from golden tickets

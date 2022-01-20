@@ -64,12 +64,12 @@ public class Title extends World
         // If player clicked on the music on/off switch
         if(Greenfoot.mouseClicked(musicOn)){
             bgm.pause();
-            addObject(musicOff, 930, 30);
+            addObject(musicOff, 860, 60);
             removeObject(musicOn);
         }
         if(Greenfoot.mouseClicked(musicOff)){
             Title.bgm.playLoop();
-            addObject(musicOn, 930, 30);
+            addObject(musicOn, 860, 60);
             removeObject(musicOff);
         }
     }

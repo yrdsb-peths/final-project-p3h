@@ -14,13 +14,14 @@ public class ShopItem extends Actor
     
     public GreenfootImage img; // See Buttons class for descriptions of these variables
     public int price;
+    public boolean bought = false;
     public boolean ifMoved = false;
     public boolean firstMove = true;
     public ShopItem(GreenfootImage img, int price)
     {
         this.img = img;
         this.price = price;
-        drawBorder(yellow);
+        if(!bought) drawBorder(yellow);
     }
     
     private void drawBorder(Color color)
@@ -39,26 +40,30 @@ public class ShopItem extends Actor
     
     public void soldOut()
     {
-        setImage(new GreenfootImage("SoldOut.png"));
+        img = new GreenfootImage("SoldOut.png");
+        setImage(img);
+        bought = true;
     }
     
     public void act()
-    {
-        if (Greenfoot.mouseMoved(this))
+    {   if(!bought)
         {
-            if(firstMove){
-                firstMove = false;
-                ifMoved = true;
-                Title.cursor.play();
-                drawBorder(yellow.brighter());
+            if (Greenfoot.mouseMoved(this))
+            {
+                if(firstMove){
+                    firstMove = false;
+                    ifMoved = true;
+                    Title.cursor.play();
+                    drawBorder(yellow.brighter());
+                }
             }
-        }
-        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
-        {
-            firstMove = true;
-            if(ifMoved){
-                ifMoved = false;
-                drawBorder(yellow);
+            if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
+            {
+                firstMove = true;
+                if(ifMoved){
+                    ifMoved = false;
+                    drawBorder(yellow);
+                }
             }
         }
     }
