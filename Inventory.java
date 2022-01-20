@@ -26,12 +26,12 @@ public class Inventory extends World
         addObject(GameHall.backToTitle, 840, 80);
         
         // Add buttons into HashMap
-        itemImg.put(50, new Picture(new GreenfootImage("i-goldenEgg.png")));
-        itemImg.put(10, new Picture(new GreenfootImage("i-stuffy.png")));
-        itemImg.put(20, new Picture(new GreenfootImage("i-laptop.png")));
-        itemImg.put(15, new Picture(new GreenfootImage("i-mysteryBox.png")));
-        itemImg.put(5, new Picture(new GreenfootImage("i-garlicBread.png")));
-        itemImg.put(30, new Picture(new GreenfootImage("i-phone.png")));
+        itemImg.put(20, new Picture(new GreenfootImage("i-goldenEgg.png")));
+        itemImg.put(25, new Picture(new GreenfootImage("i-stuffy.png")));
+        itemImg.put(30, new Picture(new GreenfootImage("i-laptop.png")));
+        itemImg.put(35, new Picture(new GreenfootImage("i-mysteryBox.png")));
+        itemImg.put(40, new Picture(new GreenfootImage("i-garlicBread.png")));
+        itemImg.put(45, new Picture(new GreenfootImage("i-phone.png")));
         
         //Initialize array from Shop
         int x = 0;
