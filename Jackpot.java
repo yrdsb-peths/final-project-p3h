@@ -99,20 +99,20 @@ public class Jackpot extends World
                 
                 //Use array nums to determine the prize/tickets deducted
                 //3 Xs = no prize nor loss
-                if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0)
+                if(nums[0] == 0 || nums[1] == 0 || nums[2] == 0)
                 {
                     GoldenTickets.addTickets(50);
                     gainedWin = true;
                 }
-                if(nums[0] == 1 && nums[1] == 1 && nums[2] == 1)
+                if(nums[0] == 1 || nums[1] == 1 || nums[2] == 1)
                 {
-                    GoldenTickets.addTickets(5);
+                    GoldenTickets.addTickets(10);
                 }
-                else if(nums[0] == 2 && nums[1] == 2 && nums[2] == 2)
+                else if(nums[0] == 2 || nums[1] == 2 || nums[2] == 2)
                 {
                     GoldenTickets.addTickets(15);
                 }
-                else if(nums[0] == 4 && nums[1] == 4 && nums[2] == 4)
+                else if(nums[0] == 4 || nums[1] == 4 || nums[2] == 4)
                 {
                     if(GoldenTickets.getTickets() >= 10)
                     {

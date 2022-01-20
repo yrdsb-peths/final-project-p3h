@@ -2,6 +2,7 @@ import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
 
+// This class reads the words from an URL into an ArrayList
 public class Reader {
     public static String url = "https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt";
 

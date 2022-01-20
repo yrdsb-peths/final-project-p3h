@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Counter
-comment0.text=\r\n\ This\ class\ creates\ counters\ so\ that\ the\ game\ could\ keep\ track\ of\ the\r\n\ number\ of\ words/boards\ the\ player\ finished\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ class\ creates\ counters\ so\ that\ the\ game\ could\ keep\ track\ of\ the\r\n\ number\ of\ wins\ in\ game\ the\ player\ finished\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Counter\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

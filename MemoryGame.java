@@ -11,20 +11,22 @@ public class MemoryGame extends World
     private static final int ROWS=4, COLUMNS=4;
     private static final int imageSize = 100; //height and width of the images in the Card class
     
+    // Initialize memory cards
     private Card[] cards = new Card[ROWS*COLUMNS]; //all 16 cards
-    private Card[] activeCards = new Card[2];
+    private Card[] activeCards = new Card[2]; // two cards the player picked
+    // Initialize timer
     private int timer = 0; //show images while timer>0
     private int pauseTime = 50; //number of time the player can memorize the cards
-    
     public static SimpleTimer timeSec = new SimpleTimer(); //timer to count amount of seconds
     
-    private Color yellow = new Color(255, 222, 89);
+    private Color yellow = new Color(255, 222, 89); // color for win String
     
-    public static boolean timeBelow30 = false;
+    public static boolean timeBelow30 = false; // boolean for timer
     public MemoryGame()
     {    
         super(960, 540, 1);
-        //create an array of nums (1,1,2,2,3,3, ...)
+        
+        //create an array of nums (1,1,2,2,3,3,...)
         int[] num = new int[ROWS*COLUMNS];
         for (int i=0; i<num.length; i++)
         {
@@ -35,12 +37,12 @@ public class MemoryGame extends World
         for (int i=0; i<num.length; i++)
         {
             int random = i + Greenfoot.getRandomNumber(num.length - i);
-            int help = num[i];
+            int n = num[i];
             num[i] = num[random];
-            num[random] = help;
+            num[random] = n;
         }
         
-        //add the cards to the world
+        //Add the cards to the world
         for (int x=0; x<COLUMNS; x++) for (int y=0; y<ROWS; y++)
         {
             addObject(cards[x * ROWS + y] = new Card(num[x * ROWS + y]), imageSize + x * (imageSize*4/3) - 25, imageSize + y * (imageSize*4/3) - 30);
@@ -49,7 +51,7 @@ public class MemoryGame extends World
         //Add Golden tickets Counter
         addObject(GameHall.currency, 820, 500);
         
-        timeSec.mark();
+        timeSec.mark(); // start timer
     }
     
     public void act()
@@ -68,11 +70,12 @@ public class MemoryGame extends World
             return; 
         }
         
-        for (Card card : cards) //for each Card
+        // Checks when player chooses cards to match
+        for (Card card : cards)
         {
-            if (!card.getSolved() && activeCards[0] != card && Greenfoot.mousePressed(card))
+            if (!card.getSolved() && activeCards[0] != card && Greenfoot.mouseClicked(card))
             {
-                card.updateImage(true); ////show card
+                card.updateImage(true); //show card
                 if (activeCards[0] == null) //first card
                 {
                     activeCards[0] = card;
@@ -87,7 +90,7 @@ public class MemoryGame extends World
                         
                         //check if this was the last pair
                         boolean allSolved = true;
-                        for (Card c : cards)
+                        for (Card c : cards) //check if all cards were solved
                         {
                             if (!c.getSolved()) //card not solved yet
                             {
@@ -97,10 +100,10 @@ public class MemoryGame extends World
                         }
                         if (allSolved)
                         {
-                            //add back to title button
+                            // Win screen
                             addObject(GameHall.backtoarcade, 750, 450);
                             Title.winSound.play();
-                            addObject(new Buttons(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
+                            addObject(new Picture(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
                             ,26, yellow, new Color(0,0,0,0))), 750, 400);
                             GoldenTickets.addTickets(20);
                             
@@ -125,6 +128,6 @@ public class MemoryGame extends World
             }
         }
         
-        GameHall.checkPause();
+        GameHall.checkPause(); // check if player pressed on backtoarcade
     }
 }

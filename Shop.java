@@ -2,20 +2,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
 /**
- * Write a description of class Shop here.
+ * The shop is where the player can buy items.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class Shop extends World
 {
+    // Save a reference to the previous shop world
     public static Shop shop;
     
+    // All items in the shop corresponding to a specific price
     public HashMap<Buttons,Integer> items = new HashMap<Buttons,Integer>();
-    
+    // All items in the shop that are already bought by the player
     public static List<Integer> boughtItems = new ArrayList<Integer>();
     
-    //add buttons
+    // Add items
         Buttons goldenEgg = new Buttons(new GreenfootImage("s-goldenEgg.png"));
         Buttons laptop = new Buttons(new GreenfootImage("s-laptop.png"));
         Buttons stuffy = new Buttons(new GreenfootImage("s-stuffy.png"));
@@ -29,9 +31,9 @@ public class Shop extends World
     public Shop()
     {    
         super(960, 540, 1); 
-        shop = this;
+        shop = this; // set reference to this world
  
-        // add shop object into HashMap
+        // add shop items & prices into HashMap
         items.put(goldenEgg, 50);
         items.put(laptop, 20);
         items.put(stuffy, 10);
@@ -39,16 +41,16 @@ public class Shop extends World
         items.put(garlicBread, 5);
         items.put(phone, 30);
         
-        //add shop objects onto world
+        //add shop items onto world
         int column = 0;
         for(Buttons product : items.keySet())
         {
-            int startX = getWidth()/2 - 200;
+            int startX = getWidth()/2 - 133;
             if(column < 3){
-                addObject(product, startX + column%3 * 200, 205);
+                addObject(product, startX + column%3 * 230, 145);
             }
             else{
-                addObject(product, startX + column%3 * 200, 420);
+                addObject(product, startX + column%3 * 230, 400);
             }
             column++;
         }
@@ -56,8 +58,10 @@ public class Shop extends World
     
     public void act()
     {
-        addObject(GameHall.currency, 830, 520);
-        addObject(GameHall.backtoarcade, 100, 510);
+        addObject(GameHall.currency, 125, 450); 
+        addObject(GameHall.backtoarcade, 125, 500);
+        
+        // If user pressed on any shop item
         if(Greenfoot.mouseClicked(goldenEgg)){
             check(goldenEgg);
         }
@@ -76,17 +80,20 @@ public class Shop extends World
         if(Greenfoot.mouseClicked(mysteryBox)){
             check(mysteryBox);
         }
+        
         GameHall.checkPause();
     }
     
+    // This method checks if the player could buy the item
     private void check(Buttons button)
     {
-        Title.cashSound.play();
-        int price = items.get(button);
-        GoldenTickets.addTickets(-price);
-        
-        boughtItems.add(price);
-        
-        removeObject(button);
+         int price = items.get(button);
+        if(GoldenTickets.getTickets() >= price) //if # of golden tickets is enough for the item
+        {
+            Title.cashSound.play();
+            GoldenTickets.addTickets(-price); // deduce cost from golden tickets
+            boughtItems.add(price); // add the item into list of bought items
+            removeObject(button); // remove item from store
+        }
     }
 }

@@ -9,7 +9,7 @@ import greenfoot.*;
  */
 public class Card extends Actor
 {
-    private static final GreenfootImage[] images =
+    private static GreenfootImage[] images =
     {
         new GreenfootImage("0.png"), 
         new GreenfootImage("1.png"),
@@ -28,28 +28,24 @@ public class Card extends Actor
         this.num = num;
         updateImage(false);
     }
-    
+    //returns number of the card
     public int getNum() 
     {
         return num;
     }
-    
+    //set the state(solved or unsolved) of the card
     public void setSolved(boolean solved) 
     {
         this.solved = solved;
     }
+    //returns the state of the card
     public boolean getSolved() 
     {
         return solved;
     }
-    
+    //if the card is solved then show the number of the card
     public void updateImage(boolean showCard)
     {
         setImage(images[showCard ? num : 0]);
-    }
-    
-    public static int getNumberOfIDs() 
-    {
-        return images.length-1;
     }
 }

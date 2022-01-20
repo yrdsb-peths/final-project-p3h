@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MergeSort
-comment0.text=\r\n\ Merge\ Sort\r\n
+comment0.text=\r\n\ Merge\ Sort\:\ sorting\ method\ and\ recursion\r\n
 comment1.params=arr\ i\ j
 comment1.target=void\ swap(int[],\ int,\ int)
 comment2.params=arr

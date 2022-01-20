@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
 /**
- * Merge Sort
+ * Merge Sort: sorting method and recursion
  */
 public class MergeSort
 {

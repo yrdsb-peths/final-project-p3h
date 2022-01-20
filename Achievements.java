@@ -56,6 +56,7 @@ public class Achievements extends World
     {
         if(Greenfoot.mouseClicked(backtotitle))
         {
+            Title.click.play();
             Greenfoot.setWorld(new Title());
         }
     }
