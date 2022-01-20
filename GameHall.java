@@ -11,7 +11,7 @@ public class GameHall extends World
     //Mini game buttons
     private Buttons memoryGame = new Buttons(new GreenfootImage("MemoryGame.png"));
     private Buttons rps = new Buttons(new GreenfootImage("RPS.png"));
-    private Buttons jackpot = new Buttons(new GreenfootImage("Jackpot.png"));
+    private Buttons jackpot = new Buttons(new GreenfootImage("jackpot.png"));
     private Buttons hangman = new Buttons(new GreenfootImage("Hangman.png"));
     
     // Menu, Achievements, Shop, Inventory buttons
@@ -20,7 +20,7 @@ public class GameHall extends World
     private Buttons shop = new Buttons(new GreenfootImage("ShopButton.png"));
     private Buttons inventory = new Buttons(new GreenfootImage("InventoryButton.png"));
     // Pause menu buttons
-    public static Buttons resume = new Buttons(new GreenfootImage("ResumeButton.png"));
+    public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
     public static Buttons backToTitle = new Buttons(new GreenfootImage("BackToTitleButton.png"));
     public static Buttons backToArcade = new Buttons(new GreenfootImage("BackToArcadeButton.png"));
     public Buttons musicOnMenu = new Buttons(new GreenfootImage("Menu-MusicOnButton.png"));
