@@ -166,7 +166,14 @@ public class RockPaperScissor extends World
             setBackground(new GreenfootImage("rps-LoseScreen.png")); 
             if(!ticketsAdded)
             {
-                GoldenTickets.addTickets(-10);
+                if(GoldenTickets.getTickets() >= 10)
+                {
+                    GoldenTickets.addTickets(-10);
+                }
+                else
+                {
+                    GoldenTickets.setTickets(0);
+                }
             }
             ticketsAdded = true;
         }

@@ -88,6 +88,11 @@ public class GameHall extends World
             }
             else Greenfoot.setWorld(Shop.shop); //if player already went in the shop, then save the previous shop world
         }
+        //Inventory
+        if(Greenfoot.mouseClicked(inventory)){
+            Title.click.play();
+            Greenfoot.setWorld(new Inventory());
+        }
         //Menu
         if(Greenfoot.mouseClicked(pausemenu))
         {
