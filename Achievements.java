@@ -10,7 +10,7 @@ public class Achievements extends World
 {
     //Greyed Out Achievements
     public final int fg_FULL = 1;
-    public final int ag_FULL = 5;
+    public final int ag_FULL = 4;
     public final int gt100_FULL = 150;
     public final int gt200_FULL = 200;
     public final int gp_FULL = 1;

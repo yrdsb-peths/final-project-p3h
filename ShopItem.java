@@ -23,7 +23,7 @@ public class ShopItem extends Actor
         board.drawImage(img, 5, 5);
         board.setColor(Color.BLACK);
         board.setFont(fnt);
-        board.drawString(String.valueOf(price), 75, 218);
+        board.drawString(String.valueOf(price), 80, 218);
     }
     
     public void soldOut()

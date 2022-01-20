@@ -13,7 +13,7 @@ public class Shop extends World
     public static Shop shop;
     
     // All items in the shop corresponding to a specific price
-    public HashMap<Buttons,Integer> items = new HashMap<Buttons,Integer>();
+    public HashMap<ShopItem,Integer> items = new HashMap<ShopItem,Integer>();
     // All items in the shop that are already bought by the player
     public static List<Integer> boughtItems = new ArrayList<Integer>();
         
@@ -26,12 +26,12 @@ public class Shop extends World
     public static final int bareBearsP = 50;
     
     // Add items
-        Buttons doraemon = new Buttons(new GreenfootImage("Doraemon.png"));
-        Buttons minions  = new Buttons(new GreenfootImage("Minions.jpg"));
-        Buttons pusheen = new Buttons(new GreenfootImage("Pusheen.png"));
-        Buttons bulbasaur = new Buttons(new GreenfootImage("Bulbasaur.png"));
-        Buttons pikachu = new Buttons(new GreenfootImage("Pikachu.png"));
-        Buttons bareBears = new Buttons(new GreenfootImage("BareBears.jpg"));
+    ShopItem doraemon = new ShopItem(new GreenfootImage("Doraemon.png"), doraemonP);
+    ShopItem minions  = new ShopItem(new GreenfootImage("Minions.jpg"), minionsP);
+    ShopItem pusheen = new ShopItem(new GreenfootImage("Pusheen.png"), pusheenP);
+    ShopItem bulbasaur = new ShopItem(new GreenfootImage("Bulbasaur.png"), bulbasaurP);
+    ShopItem pikachu = new ShopItem(new GreenfootImage("Pikachu.png"), pikachuP);
+    ShopItem bareBears = new ShopItem(new GreenfootImage("BareBears.jpg"), bareBearsP);
         
     /**
      * Constructor for objects of class Shop.
@@ -52,7 +52,7 @@ public class Shop extends World
         
         //add shop items onto world
         int column = 0;
-        for(Buttons product : items.keySet())
+        for(ShopItem product : items.keySet())
         {
             int startX = getWidth()/2 - 110;
             if(column < 3){
@@ -95,7 +95,7 @@ public class Shop extends World
     }
     
     // This method checks if the player could buy the item
-    private void check(Buttons item)
+    private void check(ShopItem item)
     {
         int price = items.get(item);
         if(GoldenTickets.getTickets() >= price) //if # of golden tickets is enough for the item
