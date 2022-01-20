@@ -103,7 +103,7 @@ public class Shop extends World
             Title.cashSound.play();
             GoldenTickets.addTickets(-price); // deduce cost from golden tickets
             boughtItems.add(price); // add the item into list of bought items
-            removeObject(item);
+            item.soldOut();
         }
     }
 }
