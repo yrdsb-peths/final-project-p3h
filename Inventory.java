@@ -23,7 +23,7 @@ public class Inventory extends World
     {    
         super(960, 540, 1); 
         
-        addObject(GameHall.backToTitle, 840, 80);
+        addObject(GameHall.backToArcade, 840, 80);
         
         // Add buttons into HashMap
         itemImg.put(Shop.pusheenP, (new InventoryItem(new GreenfootImage("Pusheen.png"), "Pusheen", Shop.pusheenP)));
@@ -46,10 +46,6 @@ public class Inventory extends World
         MergeSort.sort(prices);
         
         // Find all the bought items and show it in the inventory
-        if(prices.length == 0){ // if the player didn't buy anything yet
-            Picture noItems = new Picture(new GreenfootImage("You haven't bought anything yet", 32, new Color(255, 222, 89), new Color(0,0,0,0)));
-            addObject(noItems, 510, 80);
-        }
         for(int n : prices) // add the prices into the ArrayList to keep the correct order
         {
             items.add(itemImg.get(n));
