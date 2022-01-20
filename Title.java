@@ -8,10 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Title extends World
 {
-    private Buttons playButton = new Buttons(new GreenfootImage("PlayButton.png"));
-    private Buttons achievementsButton = new Buttons(new GreenfootImage("AchievementsButton.png"));
-    private Buttons inventoryButton = new Buttons(new GreenfootImage("InventoryButton.png"));
-    private Buttons exitButton = new Buttons(new GreenfootImage("ExitButton.png"));
+    private Buttons arcadeButton = new Buttons(new GreenfootImage("ArcadeButton-U.png"));
+    private Buttons exitButton = new Buttons(new GreenfootImage("ExitButton-U.png"));
     
     // Background music and sound effects
     public static GreenfootSound bgm = new GreenfootSound("Music.mp3");
@@ -34,12 +32,10 @@ public class Title extends World
     {    
         // Create a new world with 960x540 cells with a cell size of 1x1 pixels.
         super(960, 540, 1); 
-        setBackground(new GreenfootImage("TitleScreen.png"));
+        setBackground(new GreenfootImage("TitleWorld.png"));
         
-        addObject(playButton, 480, 300);
-        addObject(achievementsButton, 180, 400);
-        addObject(inventoryButton, 480, 400);
-        addObject(exitButton, 780, 400);
+        addObject(arcadeButton, 332, 404);
+        addObject(exitButton, 628, 404);
         
         addObject(musicOff, 930, 30);
         
@@ -52,17 +48,9 @@ public class Title extends World
     
     public void act()
     {
-        if(Greenfoot.mouseClicked(playButton)) {
+        if(Greenfoot.mouseClicked(arcadeButton)) {
             click.play();
             Greenfoot.setWorld(new GameHall());
-        }
-        if(Greenfoot.mouseClicked(achievementsButton)) {
-            click.play(); 
-            Greenfoot.setWorld(new Achievements());
-        }
-        if(Greenfoot.mouseClicked(inventoryButton)) {
-            click.play(); 
-            Greenfoot.setWorld(new Inventory());
         }
         if(Greenfoot.mouseClicked(exitButton)) {
             click.play();

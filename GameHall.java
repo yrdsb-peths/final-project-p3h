@@ -8,18 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameHall extends World
 {
-    private Buttons memoryCard = new Buttons(new GreenfootImage("memorycardbutton.png"));
-    private Buttons rockpaperscissors = new Buttons(new GreenfootImage("rockpaperscissorsbutton.png"));
-    private Buttons jackpot = new Buttons(new GreenfootImage("jackpot.png"));
-    private Buttons trivia = new Buttons(new GreenfootImage("triviabutton.png"));
+    private Buttons memoryGame = new Buttons(new GreenfootImage("MemoryGame.png"));
+    private Buttons rps = new Buttons(new GreenfootImage("RPS.png"));
+    private Buttons jackpot = new Buttons(new GreenfootImage("Jackpot.png"));
+    private Buttons hangman = new Buttons(new GreenfootImage("Hangman.png"));
     
-    public Buttons pausemenu = new Buttons(new GreenfootImage("pausemenu.png"));
+    private Buttons pausemenu = new Buttons(new GreenfootImage("MenuButton.png"));
+    private Buttons achievements = new Buttons(new GreenfootImage("AchievementsButton.png"));
+    private Buttons shop = new Buttons(new GreenfootImage("ShopButton.png"));
+    private Buttons inventory = new Buttons(new GreenfootImage("InventoryButton.png"));
+    
     public static Buttons resume = new Buttons(new GreenfootImage("resumebutton.png"));
     public static Buttons backtotitle = new Buttons(new GreenfootImage("BackToTitle.png"));
     public static Buttons backtoarcade = new Buttons(new GreenfootImage("BackToArcade.png"));
     public Buttons musicOnMenu = new Buttons(new GreenfootImage("Menu-musicOn.png"));
     public Buttons musicOffMenu = new Buttons(new GreenfootImage("Menu-musicOff.png"));
-    private Buttons shop = new Buttons(new GreenfootImage("shop.png"));
     
     private int pauseOption = 1;
     private boolean pause = false;
@@ -37,13 +40,15 @@ public class GameHall extends World
         super(960, 540, 1); 
         
         //add games
-        addObject(memoryCard, 330, 250);
-        addObject(rockpaperscissors, 430, 250);
-        addObject(jackpot, 530, 250);
-        addObject(trivia, 630, 250);
+        addObject(memoryGame, 199, 220);
+        addObject(rps, 466, 220);
+        addObject(hangman, 199, 384);
+        addObject(jackpot, 466, 384);
         //add pause menu & shop
-        addObject(pausemenu, 400, 480);
-        addObject(shop, 560, 480);
+        addObject(pausemenu, 760, 92);
+        addObject(achievements, 760, 205);
+        addObject(shop, 760, 318);
+        addObject(inventory, 760, 432);
         
     }
     
@@ -51,17 +56,17 @@ public class GameHall extends World
     {
         //show currency
         addObject(currency, 130, 500);
-        if(Greenfoot.mouseClicked(memoryCard))
+        if(Greenfoot.mouseClicked(memoryGame))
         {
             Title.click.play();
             Greenfoot.setWorld(new MemoryGame());
         }
-        else if(Greenfoot.mouseClicked(rockpaperscissors))
+        else if(Greenfoot.mouseClicked(rps))
         {
             Title.click.play();
             Greenfoot.setWorld(new RockPaperScissor());
         }
-        else if(Greenfoot.mouseClicked(trivia))
+        else if(Greenfoot.mouseClicked(hangman))
         {
             Title.click.play();
             Greenfoot.setWorld(new HangMan());
