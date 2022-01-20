@@ -18,12 +18,12 @@ public class Shop extends World
     public static List<Integer> boughtItems = new ArrayList<Integer>();
         
     //Item Prices
-    private final int doraemonP = 20;
-    private final int minionsP = 25;
-    private final int pusheenP = 30;
-    private final int bulbasaurP = 35;
-    private final int pikachuP = 40;
-    private final int bareBearsP = 50;
+    public static final int doraemonP = 20;
+    public static final int minionsP = 25;
+    public static final int pusheenP = 30;
+    public static final int bulbasaurP = 35;
+    public static final int pikachuP = 40;
+    public static final int bareBearsP = 50;
     
     // Add items
         ShopItem doraemon = new ShopItem(new GreenfootImage("Doraemon.png"), doraemonP);
