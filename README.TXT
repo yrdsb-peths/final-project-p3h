@@ -29,7 +29,9 @@ DATA STRUCTURES:
 11. Array in Card Actor: images
 
 SORTING METHOD:
-Merge sort in MergeSort class
+Merge sort in MergeSort class, used in Inventory when sorting bought
+item prices in an array
 
 RECURSION: 
-Merge sort in MergeSort class
+Merge sort in MergeSort class, used in Inventory when sorting bought
+item prices in an array
