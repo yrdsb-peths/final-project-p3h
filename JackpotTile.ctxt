@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=JackpotTile
-comment0.text=\r\n\ Create\ a\ jackpot\ Tile\ for\ the\ game\ Jackpot\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=i
-comment1.target=JackpotTile(greenfoot.GreenfootImage)
-comment1.text=\r\n\ Consruct\ a\ Jackpot\ Tile\r\n\ @param\ name\ The\ name\ of\ the\ type\ of\ tile\r\n
-numComments=2

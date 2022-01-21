@@ -20,9 +20,9 @@ public class Jackpot extends World
     private GreenfootImage spinning = new GreenfootImage("Jackpot-Spinning.png");
     
     //Starting tiles to be displayed 
-    private JackpotTile spinW = new JackpotTile(w);
-    private JackpotTile spinI = new JackpotTile(i);
-    private JackpotTile spinN = new JackpotTile(n);
+    private Picture spinW = new Picture(w);
+    private Picture spinI = new Picture(i);
+    private Picture spinN = new Picture(n);
         
     private Buttons spin = new Buttons(new GreenfootImage("SpinButton-U.png"));
     private GreenfootImage spinButton;
@@ -78,7 +78,7 @@ public class Jackpot extends World
                 //Display "spinning" pictures so that it looks like the spinner is moving
                 for(int i = 0; i < 3; i++)
                 {
-                    addObject(new JackpotTile(spinner[i][5]), 150 + i * 204, 318);
+                    addObject(new Picture(spinner[i][5]), 150 + i * 204, 318);
                 }
                 Greenfoot.delay(20);
                 //Remove the spinning pictures
@@ -94,7 +94,7 @@ public class Jackpot extends World
                 {
                     int rand = Greenfoot.getRandomNumber(5);
                     nums[i] = rand;
-                    addObject(new JackpotTile(spinner[i][rand]), 150 + i * 204, 318);
+                    addObject(new Picture(spinner[i][rand]), 150 + i * 204, 318);
                 }
                 
                 //Use array nums to determine the prize/tickets deducted

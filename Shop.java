@@ -71,25 +71,16 @@ public class Shop extends World
         addObject(GameHall.backToArcade, 125, 500);
                 
         // If user pressed on any shop item
-        if(Greenfoot.mouseClicked(pusheen)){
-            check(pusheen);
+        if(Greenfoot.mouseClicked(null))
+        {
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            if(mouse == null) return;
+            Actor actor = mouse.getActor();
+            if(actor != null && actor instanceof ShopItem)
+            {
+                check((ShopItem)actor);
+            }
         }
-        if(Greenfoot.mouseClicked(pikachu)){
-            check(pikachu);
-        }
-        if(Greenfoot.mouseClicked(bulbasaur)){
-            check(bulbasaur);
-        }
-        if(Greenfoot.mouseClicked(bareBears)){
-            check(bareBears);
-        }
-        if(Greenfoot.mouseClicked(doraemon)){
-            check(doraemon);
-        }
-        if(Greenfoot.mouseClicked(minions)){
-            check(minions);
-        }
-        
         
         GameHall.checkPause();
     }
