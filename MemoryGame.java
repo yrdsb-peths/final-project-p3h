@@ -21,7 +21,7 @@ public class MemoryGame extends World
     
     private Color yellow = new Color(255, 222, 89); // color for win String
     
-    public static boolean timeBelow30 = false; // boolean for timer
+    public static boolean timeBelow30 = false; // boolean for timer to check achievements
     public MemoryGame()
     {    
         super(960, 540, 1);

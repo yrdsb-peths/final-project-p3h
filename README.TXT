@@ -16,8 +16,9 @@ buttons in the game.
 AUTHORS: Melanie, Grace
 
 DATA STRUCTURES:
-1. Array in Title World: boolean[] gamesPlayed
-2. HashMap in Shop World: items
+1. Array in Title World: boolean[] gamesPlayed -> used in HangMan,
+Jackpot, MemoryGame, RockPaperScissor, and Shop worlds
+2. HashMap in Shop World: <ShopItem,Integer>items
 3. ArrayList in Shop World: boughtItems
 4. Arrays in MemoryGame World: Card[] cards & Card[] activeCards
 5. 2D array in Jackpot World: GreenfootImage[][] spinner

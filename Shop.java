@@ -12,7 +12,7 @@ public class Shop extends World
     // Save a reference to the previous shop world
     public static Shop shop;
     
-    // All items in the shop corresponding to a specific price
+    // Maps all items in the shop (key) corresponding to a specific price (value)
     public HashMap<ShopItem,Integer> items = new HashMap<ShopItem,Integer>();
     // All items in the shop that are already bought by the player
     public static List<Integer> boughtItems = new ArrayList<Integer>();

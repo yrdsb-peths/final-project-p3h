@@ -13,7 +13,10 @@ public class Reader {
         new InputStreamReader(wordsURL.openStream()));
         String word;
         while ((word = in.readLine()) != null)
+        {
             list.add(word);
+        }
+            
         in.close();
     }
 }
