@@ -16,4 +16,5 @@ public class JackpotTile extends Actor
     {
         setImage(i);
     }
+    
 }

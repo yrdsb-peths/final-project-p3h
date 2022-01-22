@@ -18,12 +18,13 @@ public class Jackpot extends World
     private GreenfootImage x = new GreenfootImage("Jackpot-X.png");
     private GreenfootImage bomb = new GreenfootImage("Jackpot-Bomb.png");
     private GreenfootImage spinning = new GreenfootImage("Jackpot-Spinning.png");
+
     
     //Starting tiles to be displayed 
     private JackpotTile spinW = new JackpotTile(w);
     private JackpotTile spinI = new JackpotTile(i);
     private JackpotTile spinN = new JackpotTile(n);
-        
+    
     private Buttons spin = new Buttons(new GreenfootImage("SpinButton-U.png"));
     private GreenfootImage spinButton;
     
@@ -41,7 +42,7 @@ public class Jackpot extends World
         //Fill spinner array
         spinner[0][0] = w;
         spinner[1][0] = i;
-        spinner[2][0] = n;
+        spinner[2][0] = n;  
         addImageArray(spinner, coin, 1);
         addImageArray(spinner, coinStack, 2);
         addImageArray(spinner, x, 3);
