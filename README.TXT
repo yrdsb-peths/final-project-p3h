@@ -36,3 +36,7 @@ item prices in an array
 RECURSION: 
 Merge sort in MergeSort class, used in Inventory when sorting bought
 item prices in an array
+
+CHEAT:
+In Shop world, press SPACE to earn 100 Golden Tickets. There is only
+one chance.
