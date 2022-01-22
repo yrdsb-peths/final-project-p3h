@@ -33,6 +33,8 @@ public class Shop extends World
     ShopItem pikachu = new ShopItem(new GreenfootImage("Pikachu.png"), pikachuP);
     ShopItem bareBears = new ShopItem(new GreenfootImage("BareBears.jpg"), bareBearsP);
         
+    //Cheat: makes sure player could only use the cheat once
+    boolean cheated = false;
     /**
      * Constructor for objects of class Shop.
      * 
@@ -81,7 +83,7 @@ public class Shop extends World
                 check((ShopItem)actor);
             }
         }
-        
+        checkCheat();
         GameHall.checkPause();
     }
     
@@ -95,6 +97,15 @@ public class Shop extends World
             GoldenTickets.addTickets(-price); // deduce cost from golden tickets
             boughtItems.add(price); // add the item into list of bought items
             item.soldOut();
+        }
+    }
+    
+    //This method allows the player to earn 100 Golden Tickets with the cheat code
+    private void checkCheat()
+    {
+        if(!cheated && Greenfoot.isKeyDown("SPACE")) {
+            GoldenTickets.addTickets(100);
+            cheated = true;
         }
     }
 }
