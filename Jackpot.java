@@ -18,15 +18,19 @@ public class Jackpot extends World
     private GreenfootImage x = new GreenfootImage("Jackpot-X.png");
     private GreenfootImage bomb = new GreenfootImage("Jackpot-Bomb.png");
     private GreenfootImage spinning = new GreenfootImage("Jackpot-Spinning.png");
-
     
     //Starting tiles to be displayed 
-    private JackpotTile spinW = new JackpotTile(w);
-    private JackpotTile spinI = new JackpotTile(i);
-    private JackpotTile spinN = new JackpotTile(n);
+    private Picture spinW = new Picture(w);
+    private Picture spinI = new Picture(i);
+    private Picture spinN = new Picture(n);
     
     private Buttons spin = new Buttons(new GreenfootImage("SpinButton-U.png"));
     private GreenfootImage spinButton;
+    
+    private Color yellow = new Color(255, 222, 89);
+    
+    private Buttons prizeList = new Buttons(new GreenfootImage("question.png"));
+    private Buttons backToJackpot = new Buttons(new GreenfootImage("BackToJackpotButton.png"));
     
     public static boolean gainedWin = false;
     /**
@@ -37,7 +41,8 @@ public class Jackpot extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(960, 540, 1);
-        setBackground(new GreenfootImage("JackpotWorld.png"));
+        
+        addObject(prizeList, 930, 30);
         
         //Fill spinner array
         spinner[0][0] = w;
@@ -64,10 +69,23 @@ public class Jackpot extends World
     
     public void act()
     {
+        if(Greenfoot.mouseClicked(prizeList))
+        {
+            Title.click.play();
+            addObject(new Picture(new GreenfootImage("PrizeList.png")), 480, 270);
+            addObject(backToJackpot, 820, 50);
+        }
+        if(Greenfoot.mouseClicked(backToJackpot))
+        {
+                Greenfoot.setWorld(new Jackpot());
+        }
+        
         if(Greenfoot.mouseClicked(spin))
         {
             if(GoldenTickets.getTickets() >= 5)
             {
+                removeObjects(getObjectsAt(600, 100, null));
+                
                 //Deducts cost to run Jackpot
                 GoldenTickets.addTickets(-5);     
                 Title.cashSound.play();
@@ -79,7 +97,7 @@ public class Jackpot extends World
                 //Display "spinning" pictures so that it looks like the spinner is moving
                 for(int i = 0; i < 3; i++)
                 {
-                    addObject(new JackpotTile(spinner[i][5]), 150 + i * 204, 318);
+                    addObject(new Picture(spinner[i][5]), 150 + i * 204, 318);
                 }
                 Greenfoot.delay(20);
                 //Remove the spinning pictures
@@ -95,42 +113,63 @@ public class Jackpot extends World
                 {
                     int rand = Greenfoot.getRandomNumber(5);
                     nums[i] = rand;
-                    addObject(new JackpotTile(spinner[i][rand]), 150 + i * 204, 318);
+                    addObject(new Picture(spinner[i][rand]), 150 + i * 204, 318);
                 }
                 
                 //Use array nums to determine the prize/tickets deducted
-                //3 Xs = no prize nor loss
+                //WIN combo Tiles = 50GTS
                 if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0)
                 {
                     GoldenTickets.addTickets(50);
                     gainedWin = true;
-                    
+                    addObject(new Picture(new GreenfootImage("Congrats! You have won 50 Golden Tickets"
+                            ,30, yellow, new Color(0,0,0,0))), 650, 100);
                 }
-                if(nums[0] == 1 && nums[1] == 1 && nums[2] == 1)
+                int numTickets = 0;
+                //Any coin tile = 5GT
+                numTickets += checkTiles(1, nums, 5);
+                //Any coin stack Tile = 10GT
+                numTickets += checkTiles(2, nums, 10);
+                //3 Xs = no prize nor loss
+                //Any bomb = -10GT
+                numTickets += checkTiles(4, nums, -10);
+                
+                if(numTickets > 0)
                 {
-                    GoldenTickets.addTickets(10);
-                    
+                    addObject(new Picture(new GreenfootImage("Congrats! You have won " + numTickets + " Golden Tickets"
+                                ,30, yellow, new Color(0,0,0,0))), 600, 100);
                 }
-                else if(nums[0] == 2 && nums[1] == 2 && nums[2] == 2)
+                else if(numTickets < 0)
                 {
-                    GoldenTickets.addTickets(15);
+                    int absoluteVal = numTickets * -1;
+                    addObject(new Picture(new GreenfootImage("Oh no! You have lost " + absoluteVal + " Golden Tickets"
+                                ,30, yellow, new Color(0,0,0,0))), 600, 100);
                 }
-                else if(nums[0] == 4 && nums[1] == 4 && nums[2] == 4)
+                else if(numTickets == 0)
                 {
-                    if(GoldenTickets.getTickets() >= 10)
-                    {
-                        GoldenTickets.addTickets(-10);
-                    }
-                    else
-                    {
-                        GoldenTickets.setTickets(0);
-                    }
+                    addObject(new Picture(new GreenfootImage("Oh no! You have not won any Golden Tickets"
+                                ,30, yellow, new Color(0,0,0,0))), 600, 100);
                 }
+                GoldenTickets.addTickets(numTickets);
+                
                 //Set game as played
                 Title.gamesPlayed[2] = true;
             }
         }
         GameHall.checkPause();
+    }
+    
+    private int checkTiles(int n, int[] nums, int prize)
+    {
+        int counter = 0;
+        for(int num: nums)
+        {
+            if(num == n)
+            {
+                counter++;
+            }
+        }
+        return counter * prize;
     }
     
     //Duplicate image to all 3 rows of an array at column c

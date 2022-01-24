@@ -38,7 +38,7 @@ public class Title extends World
         addObject(arcadeButton, 332, 404);
         addObject(exitButton, 628, 404);
         
-        addObject(musicOff, 860, 60);
+        addObject(musicOff, 930, 30);
         
         //No games played yet
         for(boolean played : gamesPlayed)
@@ -64,12 +64,12 @@ public class Title extends World
         // If player clicked on the music on/off switch
         if(Greenfoot.mouseClicked(musicOn)){
             bgm.pause();
-            addObject(musicOff, 860, 60);
+            addObject(musicOff, 930, 30);
             removeObject(musicOn);
         }
         if(Greenfoot.mouseClicked(musicOff)){
             Title.bgm.playLoop();
-            addObject(musicOn, 860, 60);
+            addObject(musicOn, 930, 30);
             removeObject(musicOff);
         }
     }
