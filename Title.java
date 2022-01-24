@@ -34,10 +34,9 @@ public class Title extends World
         // Create a new world with 960x540 cells with a cell size of 1x1 pixels.
         super(960, 540, 1); 
         setBackground(new GreenfootImage("TitleWorld.png"));
-        
+        // Add arcade, exit, and music buttons
         addObject(arcadeButton, 332, 404);
         addObject(exitButton, 628, 404);
-        
         addObject(musicOff, 930, 30);
         
         //No games played yet
