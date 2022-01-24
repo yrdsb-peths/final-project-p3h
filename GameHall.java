@@ -15,7 +15,7 @@ public class GameHall extends World
     private Buttons hangman = new Buttons(new GreenfootImage("Hangman.png"));
     
     // Menu, Achievements, Shop, Inventory buttons
-    private Buttons pausemenu = new Buttons(new GreenfootImage("menubutton.png"));
+    private Buttons pausemenu = new Buttons(new GreenfootImage("MenuButton.png"));
     private Buttons achievements = new Buttons(new GreenfootImage("AchievementsButton.png"));
     private Buttons shop = new Buttons(new GreenfootImage("ShopButton.png"));
     private Buttons inventory = new Buttons(new GreenfootImage("InventoryButton.png"));
@@ -120,7 +120,7 @@ public class GameHall extends World
         removeObjects(getObjects(null)); //removes all buttons on GameHall
         
         // Pause menu screen buttons
-        addObject(new Picture(new GreenfootImage("MenuScreen.png")), 480, 270);
+        addObject(new Picture(new GreenfootImage("menuscreen.png")), 480, 270);
         addObject(resume, 480, 240);
         if(Title.bgm.isPlaying()) addObject(musicOnMenu, 480, 300);
         else addObject(musicOffMenu, 480, 300);
