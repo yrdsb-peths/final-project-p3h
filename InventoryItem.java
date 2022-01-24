@@ -11,7 +11,7 @@ public class InventoryItem extends Actor
     private GreenfootImage board = new GreenfootImage(375, 94);
     private Color yellow = new Color(255, 186, 8);
     private Color darkRed = new Color(55, 6, 23);
-    private Font fnt1 = new Font(true, false, 35);
+    private Font fnt1 = new Font(true, false, 32);
     private Font fnt2 = new Font(true, false, 20);
     
     public InventoryItem(GreenfootImage img, String name, int price)

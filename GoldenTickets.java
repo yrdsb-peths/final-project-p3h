@@ -30,6 +30,13 @@ public class GoldenTickets extends Actor
     // Adds a certain amount to the number of tickets
     public static void addTickets(int num)
     {
-        numOfTickets += num;
+        if(numOfTickets >= num)
+        {
+            numOfTickets += num;
+        }
+        else
+        {
+            setTickets(0);
+        }
     }
 }

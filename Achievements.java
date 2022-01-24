@@ -58,7 +58,7 @@ public class Achievements extends World
     public void addAchievements()
     {
         int gt = GoldenTickets.getTickets();
-        if(checkGamePlayed())
+        if(numGamesPlayed() == 1)
         {
             removeObject(fg);
         }
