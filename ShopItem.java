@@ -13,8 +13,8 @@ public class ShopItem extends Actor
     private Font fnt = new Font(true, false, 30);
     
     public GreenfootImage img; // See Buttons class for descriptions of these variables
-    public int price;
-    public boolean bought = false;
+    public int price; //price of the shop item
+    public boolean bought = false; // checks if the shop item is bought or not
     public boolean ifMoved = false;
     public boolean firstMove = true;
     public ShopItem(GreenfootImage img, int price)
@@ -23,7 +23,7 @@ public class ShopItem extends Actor
         this.price = price;
         if(!bought) drawBorder(yellow);
     }
-    
+    // Draws the border of the shop item
     private void drawBorder(Color color)
     {
         board.setColor(color);
@@ -38,6 +38,7 @@ public class ShopItem extends Actor
         board.drawString(String.valueOf(price), 80, 218);
     }
     
+    // If the player bought this shop item, the shop item is replaced with a "sold out" sign
     public void soldOut()
     {
         img = new GreenfootImage("SoldOut.png");
@@ -45,6 +46,7 @@ public class ShopItem extends Actor
         bought = true;
     }
     
+    // When the mouse hovers over a shop item, the border turns brighter yellow
     public void act()
     {   if(!bought)
         {

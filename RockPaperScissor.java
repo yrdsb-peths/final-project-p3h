@@ -43,7 +43,6 @@ public class RockPaperScissor extends World
     public RockPaperScissor()
     {    
         super(960, 540, 1); 
-        
         //Add Player interactive buttons
         addObject(rock, 280, 430);
         addObject(paper, 480, 430);
@@ -57,14 +56,8 @@ public class RockPaperScissor extends World
     {
         Random r = new Random();
         int n = r.nextInt(3);
-        if(n == 0)
-        {
-            return "rock";
-        }
-        if(n == 1)
-        {
-            return "paper";
-        }
+        if(n == 0) return "rock";
+        if(n == 1) return "paper";
         return "scissors";
     }
     
@@ -75,42 +68,32 @@ public class RockPaperScissor extends World
         else if(str.equals("paper")) addObject(computerPaper,490, 165);
         else if(str.equals("scissors")) addObject(computerScissors, 490, 165);
     }
-    // After delay, remove the computer image
+    // After delay, remove the computer image & string text
     private void removeCompImg()
     {
         removeObject(computerRock);
         removeObject(computerPaper);
         removeObject(computerScissors);
+        removeObject(tieString); 
+        removeObject(loseString);
+        removeObject(winString);
     }
     
-    // Get the winner: player or computer
+    // Get the winner: player or computer or tie
     private String getWinner(String user, String computer)
     {
-        if(user.equals("rock"))
-        {
-            if(computer.equals("paper"))
-            {
-                return computerWonRound;
-            }
-            else if(computer.equals("scissors"))
-            {
-                return playerWonRound;
-            }
+        if(user.equals("rock")){
+            if(computer.equals("paper")) return computerWonRound;
+            else if(computer.equals("scissors")) return playerWonRound;
         }
-        else if(user.equals("paper") && computer.equals("scissors"))
-        {
+        else if(user.equals("paper") && computer.equals("scissors")){
             return computerWonRound;
         }
-        else if(user.equals("scissors") && computer.equals("paper"))
-        {
+        else if(user.equals("scissors") && computer.equals("paper")){
             return playerWonRound;
         }
-        else if(computer.equals("rock"))
-        {
-            if(user.equals("scissors"))
-            {
-                return computerWonRound;
-            }
+        else if(computer.equals("rock")){
+            if(user.equals("scissors")) return computerWonRound;
             return playerWonRound;
         }
         return playerTie;
@@ -123,30 +106,21 @@ public class RockPaperScissor extends World
         {
             Title.winSound.play();
             playerWins.add();
-            getComputerImage(computerInput);
             addObject(winString, 480, 270);
-            Greenfoot.delay(40);
-            removeObject(winString);
-            removeCompImg();
         }
         else if(str.equals(computerWonRound))
         {
             Title.loseSound.play();
             computerWins.add();
-            getComputerImage(computerInput);
             addObject(loseString, 480, 270);
-            Greenfoot.delay(40);
-            removeObject(loseString);
-            removeCompImg();
         }
         else if(str.equals(playerTie))
         {
-            getComputerImage(computerInput);
             addObject(tieString, 480, 270);
-            Greenfoot.delay(40);
-            removeObject(tieString);
-            removeCompImg();
         }
+        getComputerImage(computerInput);
+        Greenfoot.delay(40); // time for player to see the string
+        removeCompImg();
     }
     
     // If the game ends, end screen pops up
