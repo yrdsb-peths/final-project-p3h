@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Title extends World
 {
+    //Arcade and exit buttons
     private Buttons arcadeButton = new Buttons(new GreenfootImage("ArcadeButton-U.png"));
     private Buttons exitButton = new Buttons(new GreenfootImage("ExitButton-U.png"));
     

@@ -104,7 +104,7 @@ public class Shop extends World
     private void checkCheat()
     {
         if(!cheated && Greenfoot.isKeyDown("SPACE")) {
-            GoldenTickets.addTickets(100);
+            GoldenTickets.setTickets(GoldenTickets.getTickets() + 100);
             cheated = true;
         }
     }
