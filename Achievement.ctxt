@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Achievement
-comment0.text=\r\n\ An\ achievement\ with\ a\ progress\ bar\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ An\ achievement\ with\ a\ progress\ bar\r\n\ \r\n\ @Melanie\r\n\ @version\ 1\r\n
 comment1.params=theAch\ theProgress\ theTotal
 comment1.target=Achievement(greenfoot.GreenfootImage,\ int,\ int)
 comment2.params=progress\ total

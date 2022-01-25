@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Achievements
-comment0.text=\r\n\ Achievements\ page\ keeps\ track\ of\ the\ achievements\ the\ player\ has\ reached\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Achievements\ page\ keeps\ track\ of\ the\ achievements\ the\ player\ has\ reached\r\n\ \r\n\ @Melanie\r\n
 comment1.params=
 comment1.target=Achievements()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Achievements.\r\n\ \r\n
@@ -9,9 +9,5 @@ comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ addAchievements()
 comment4.params=
-comment4.target=boolean\ checkGamePlayed()
-comment5.params=
-comment5.target=boolean\ allGamesPlayed()
-comment6.params=
-comment6.target=int\ numGamesPlayed()
-numComments=7
+comment4.target=int\ numGamesPlayed()
+numComments=5

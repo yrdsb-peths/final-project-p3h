@@ -39,7 +39,7 @@ public class Title extends World
         addObject(exitButton, 628, 404);
         
         addObject(musicOff, 930, 30);
-        
+                
         //No games played yet
         for(boolean played : gamesPlayed)
         {

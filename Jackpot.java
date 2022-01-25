@@ -69,6 +69,8 @@ public class Jackpot extends World
     
     public void act()
     {
+        //Prize List allows player to check how many golden tickets
+        //each type of tile earns them
         if(Greenfoot.mouseClicked(prizeList))
         {
             Title.click.play();
@@ -77,11 +79,13 @@ public class Jackpot extends World
         }
         if(Greenfoot.mouseClicked(backToJackpot))
         {
-                Greenfoot.setWorld(new Jackpot());
+                Greenfoot.setWorld(new Jackpot()); //Return back to jackpot world
         }
         
+        //When player spins the wheel
         if(Greenfoot.mouseClicked(spin))
         {
+            //Make sure they have enough money to spin
             if(GoldenTickets.getTickets() >= 5)
             {
                 removeObjects(getObjectsAt(600, 100, null));
@@ -134,6 +138,7 @@ public class Jackpot extends World
                 //Any bomb = -10GT
                 numTickets += checkTiles(4, nums, -10);
                 
+                //Display the amount of GTs the player won or lost
                 if(numTickets > 0)
                 {
                     addObject(new Picture(new GreenfootImage("Congrats! You have won " + numTickets + " Golden Tickets"
@@ -150,7 +155,7 @@ public class Jackpot extends World
                     addObject(new Picture(new GreenfootImage("Oh no! You have not won any Golden Tickets"
                                 ,30, yellow, new Color(0,0,0,0))), 600, 100);
                 }
-                GoldenTickets.addTickets(numTickets);
+                GoldenTickets.addTickets(numTickets); //Update amount of GTs
                 
                 //Set game as played
                 Title.gamesPlayed[2] = true;
@@ -159,6 +164,13 @@ public class Jackpot extends World
         GameHall.checkPause();
     }
     
+    /**
+     * After a spin, this method checks the number of a
+     * certain tile in the combo
+     * @param n = corresponding number of tile type in spinner array
+     * @param nums = array of combo
+     * @param prize = how much each tile is worth
+     */
     private int checkTiles(int n, int[] nums, int prize)
     {
         int counter = 0;

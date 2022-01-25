@@ -3,8 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Achievements page keeps track of the achievements the player has reached
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Melanie
  */
 public class Achievements extends World
 {
@@ -58,11 +57,13 @@ public class Achievements extends World
     public void addAchievements()
     {
         int gt = GoldenTickets.getTickets();
-        if(numGamesPlayed() == 1)
+        //Played First Game
+        if(numGamesPlayed() >= 1)
         {
             removeObject(fg);
         }
-        if(allGamesPlayed())
+        //Played all games
+        if(numGamesPlayed() == 4)
         {
             removeObject(ag);
         }
@@ -70,7 +71,8 @@ public class Achievements extends World
         {
             ag.setProgress(numGamesPlayed());
         }
-        if(gt >= 150)
+        //Gained 150 Golden Tickets
+        if(GoldenTickets.gained150)
         {
             removeObject(gt150);
         }
@@ -78,7 +80,8 @@ public class Achievements extends World
         {
             gt150.setProgress(gt);
         }
-        if(gt >= 200)
+        //Gained 200 Golden Tickets
+        if(GoldenTickets.gained200)
         {
             removeObject(gt200);
         }
@@ -86,18 +89,22 @@ public class Achievements extends World
         {
             gt200.setProgress(gt);
         }
+        //Gained the WIN combo in Jackpot Game
         if(Jackpot.gainedWin)
         {
             removeObject(gp);
         }
+        //Completed the memory game in less that 30s
         if(MemoryGame.timeBelow30)
         {
             removeObject(mg);
         }
+        //Bought first item from shop
         if(Shop.boughtItems.size() >= 1)
         {
             removeObject(fi);
         }
+        //Bought all items from shop
         if(Shop.boughtItems.size() == 6)
         {
             removeObject(ai);
@@ -107,33 +114,7 @@ public class Achievements extends World
             ai.setProgress(Shop.boughtItems.size());
         }
     }
-    
-    //Check if at least one game is played
-    private boolean checkGamePlayed()
-    {
-        for(boolean game: Title.gamesPlayed)
-        {
-            if(game)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    //Check if all games are played
-    private boolean allGamesPlayed()
-    {
-        for(boolean game: Title.gamesPlayed)
-        {
-            if(!game)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    
+        
     //Check the number of games played
     private int numGamesPlayed()
     {

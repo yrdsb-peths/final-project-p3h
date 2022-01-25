@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * An achievement with a progress bar
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Melanie
+ * @version 1
  */
 public class Achievement extends Actor
 {
