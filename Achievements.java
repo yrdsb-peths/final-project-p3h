@@ -57,64 +57,54 @@ public class Achievements extends World
     public void addAchievements()
     {
         int gt = GoldenTickets.getTickets();
-        //Played First Game
-        if(numGamesPlayed() >= 1)
+        updateAch(fg, numGamesPlayed(), 1); //Played First Game
+        updateAch(ag, numGamesPlayed(), 4); //Played all games
+        updateAch(gt150, GoldenTickets.gained150, gt); //Gained 150 Golden Tickets
+        updateAch(gt200, GoldenTickets.gained200, gt); //Gained 200 Golden Tickets
+        updateAch(gp, Jackpot.gainedWin, 0); //Gained the WIN combo in Jackpot Game
+        updateAch(mg, MemoryGame.timeBelow30, 0); //Completed the memory game in less that 30s
+        updateAch(fi, Shop.boughtItems.size(), 1); //Bought first item from shop
+        updateAch(ai, Shop.boughtItems.size(), 6); //Bought all items from shop
+    }
+    
+    /**
+     * Updates achievement progress bar
+     * @param ach = Achievement to update
+     * @param condition = the current value of the number whos value determines the achievement progress
+     * @param limit = the value the condition has to reach
+     */
+    private void updateAch(Achievement ach, int condition, int limit)
+    {
+        if(condition >= limit)
         {
-            removeObject(fg);
-        }
-        //Played all games
-        if(numGamesPlayed() == 4)
-        {
-            removeObject(ag);
-        }
-        else
-        {
-            ag.setProgress(numGamesPlayed());
-        }
-        //Gained 150 Golden Tickets
-        if(GoldenTickets.gained150)
-        {
-            removeObject(gt150);
-        }
-        else
-        {
-            gt150.setProgress(gt);
-        }
-        //Gained 200 Golden Tickets
-        if(GoldenTickets.gained200)
-        {
-            removeObject(gt200);
+            removeObject(ach);
         }
         else
         {
-            gt200.setProgress(gt);
-        }
-        //Gained the WIN combo in Jackpot Game
-        if(Jackpot.gainedWin)
-        {
-            removeObject(gp);
-        }
-        //Completed the memory game in less that 30s
-        if(MemoryGame.timeBelow30)
-        {
-            removeObject(mg);
-        }
-        //Bought first item from shop
-        if(Shop.boughtItems.size() >= 1)
-        {
-            removeObject(fi);
-        }
-        //Bought all items from shop
-        if(Shop.boughtItems.size() == 6)
-        {
-            removeObject(ai);
-        }
-        else
-        {
-            ai.setProgress(Shop.boughtItems.size());
+            ach.setProgress(condition);
         }
     }
-        
+    /**
+     * Updates achievement progress bar
+     * @param ach = Achievement to update
+     * @param condition = the achievement the player has to reach
+     * @param updater = current progress to condition
+       */
+    private void updateAch(Achievement ach, boolean condition, int updater)
+    {
+        if(condition)
+        {
+            removeObject(ach);
+        }
+        else
+        {
+            if(updater != 0)
+            {
+                ach.setProgress(updater);
+            }
+        }
+    }
+    
     //Check the number of games played
     private int numGamesPlayed()
     {

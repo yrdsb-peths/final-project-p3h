@@ -65,6 +65,7 @@ public class Jackpot extends World
         
         //Add back to title button
         addObject(GameHall.backToArcade, 820, 500);
+        
     }
     
     public void act()
@@ -79,7 +80,7 @@ public class Jackpot extends World
         }
         if(Greenfoot.mouseClicked(backToJackpot))
         {
-                Greenfoot.setWorld(new Jackpot()); //Return back to jackpot world
+            Greenfoot.setWorld(new Jackpot()); //Return back to jackpot world
         }
         
         //When player spins the wheel
@@ -159,6 +160,12 @@ public class Jackpot extends World
                 
                 //Set game as played
                 Title.gamesPlayed[2] = true;
+            }
+            else
+            {
+                //Text telling user that they don't have enough tickets
+                addObject(new Picture(new GreenfootImage("Sorry you do not have enough Golden Tickets"
+                                    ,30, yellow, new Color(0,0,0,0))), 600, 100);
             }
         }
         GameHall.checkPause();

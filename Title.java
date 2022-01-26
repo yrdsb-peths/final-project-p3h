@@ -39,7 +39,7 @@ public class Title extends World
         addObject(arcadeButton, 332, 404);
         addObject(exitButton, 628, 404);
         addObject(musicOff, 930, 30);
-                
+        
         //No games played yet
         for(boolean played : gamesPlayed)
         {
@@ -58,6 +58,7 @@ public class Title extends World
             click.play();
             removeObjects(getObjects(null));
             setBackground(new GreenfootImage("ExitScreen.png"));
+            GoldenTickets.setTickets(100);
             bgm.pause();
             Greenfoot.stop();
         }

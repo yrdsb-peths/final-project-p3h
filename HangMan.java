@@ -139,7 +139,7 @@ public class HangMan extends World
                         showLetter(i, Color.RED);
                     } 
                     addObject(GameHall.backToArcade, 810, 300);
-                    
+                    GoldenTickets.addTickets(20);
                     //Set game as played
                     Title.gamesPlayed[3] = true;
                     break;

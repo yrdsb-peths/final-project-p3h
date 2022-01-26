@@ -8,6 +8,12 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ addAchievements()
-comment4.params=
-comment4.target=int\ numGamesPlayed()
-numComments=5
+comment4.params=ach\ condition\ limit
+comment4.target=void\ updateAch(Achievement,\ int,\ int)
+comment4.text=\r\n\ Updates\ achievement\ progress\ bar\r\n\ @param\ ach\ \=\ Achievement\ to\ update\r\n\ @param\ condition\ \=\ the\ current\ value\ of\ the\ number\ whos\ value\ determines\ the\ achievement\ progress\r\n\ @param\ limit\ \=\ the\ value\ the\ condition\ has\ to\ reach\r\n
+comment5.params=ach\ condition\ updater
+comment5.target=void\ updateAch(Achievement,\ boolean,\ int)
+comment5.text=\r\n\ Updates\ achievement\ progress\ bar\r\n\ @param\ ach\ \=\ Achievement\ to\ update\r\n\ @param\ condition\ \=\ the\ achievement\ the\ player\ has\ to\ reach\r\n\ @param\ updater\ \=\ current\ progress\ to\ condition\r\n
+comment6.params=
+comment6.target=int\ numGamesPlayed()
+numComments=7

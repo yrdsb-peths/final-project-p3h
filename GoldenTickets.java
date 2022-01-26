@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GoldenTickets extends Actor
 {
-    public static int numOfTickets = 100; // The player starts with 100 tickets
+    public static int numOfTickets = 100;
     
     public static boolean gained150 = false;
     public static boolean gained200 = false;
