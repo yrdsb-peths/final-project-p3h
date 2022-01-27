@@ -131,7 +131,7 @@ public class RockPaperScissor extends World
             setBackground(new GreenfootImage("rps-WinScreen.png"));
             if(!ticketsAdded)
             {
-                GoldenTickets.addTickets(20);
+                GoldenTickets.setTickets(GoldenTickets.getTickets()+20);
             }
             ticketsAdded = true;
         }
@@ -142,7 +142,7 @@ public class RockPaperScissor extends World
             {
                 if(GoldenTickets.getTickets() >= 10)
                 {
-                    GoldenTickets.addTickets(-10);
+                    GoldenTickets.setTickets(GoldenTickets.getTickets() -10);
                 }
                 else
                 {

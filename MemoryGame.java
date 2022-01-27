@@ -105,7 +105,7 @@ public class MemoryGame extends World
                             Title.winSound.play();
                             addObject(new Picture(new GreenfootImage("Great job! You finished in " + timeSec.millisElapsed()/1000 + " seconds"
                             ,26, yellow, new Color(0,0,0,0))), 750, 400);
-                            GoldenTickets.addTickets(20);
+                            GoldenTickets.setTickets(GoldenTickets.getTickets() + 20);
                             
                             //Check if time is below 30 seconds
                             if(timeSec.millisElapsed()/1000 <= 30)

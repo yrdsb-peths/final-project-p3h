@@ -92,7 +92,7 @@ public class Jackpot extends World
                 removeObjects(getObjectsAt(600, 100, null));
                 
                 //Deducts cost to run Jackpot
-                GoldenTickets.addTickets(-5);     
+                GoldenTickets.setTickets(GoldenTickets.getTickets()-5);     
                 Title.cashSound.play();
                 
                 removeObject(spinW);
@@ -125,7 +125,7 @@ public class Jackpot extends World
                 //WIN combo Tiles = 50GTS
                 if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0)
                 {
-                    GoldenTickets.addTickets(50);
+                    GoldenTickets.setTickets(GoldenTickets.getTickets()+50);
                     gainedWin = true;
                     addObject(new Picture(new GreenfootImage("Congrats! You have won 50 Golden Tickets"
                             ,30, yellow, new Color(0,0,0,0))), 650, 100);
@@ -144,19 +144,21 @@ public class Jackpot extends World
                 {
                     addObject(new Picture(new GreenfootImage("Congrats! You have won " + numTickets + " Golden Tickets"
                                 ,30, yellow, new Color(0,0,0,0))), 600, 100);
+                    GoldenTickets.setTickets(GoldenTickets.getTickets()+numTickets);
                 }
                 else if(numTickets < 0)
                 {
                     int absoluteVal = numTickets * -1;
                     addObject(new Picture(new GreenfootImage("Oh no! You have lost " + absoluteVal + " Golden Tickets"
                                 ,30, yellow, new Color(0,0,0,0))), 600, 100);
+                    if(GoldenTickets.getTickets()+numTickets < 0) GoldenTickets.setTickets(0);
+                    else GoldenTickets.setTickets(GoldenTickets.getTickets()+numTickets);
                 }
                 else if(numTickets == 0)
                 {
                     addObject(new Picture(new GreenfootImage("Oh no! You have not won any Golden Tickets"
                                 ,30, yellow, new Color(0,0,0,0))), 600, 100);
                 }
-                GoldenTickets.addTickets(numTickets); //Update amount of GTs
                 
                 //Set game as played
                 Title.gamesPlayed[2] = true;

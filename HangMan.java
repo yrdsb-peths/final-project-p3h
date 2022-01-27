@@ -97,7 +97,7 @@ public class HangMan extends World
                     {
                         removeObject(letters[j]); 
                     }
-                    GoldenTickets.addTickets(20); // Player earns 20 tickets
+                    GoldenTickets.setTickets(GoldenTickets.getTickets()+20); // Player earns 20 tickets
                     //Set win screen
                     Picture winScreen = new Picture(new GreenfootImage("hangman-winScreen.png"));
                     addObject(winScreen, 800, 150);
@@ -139,7 +139,6 @@ public class HangMan extends World
                         showLetter(i, Color.RED);
                     } 
                     addObject(GameHall.backToArcade, 810, 300);
-                    GoldenTickets.addTickets(20);
                     //Set game as played
                     Title.gamesPlayed[3] = true;
                     break;

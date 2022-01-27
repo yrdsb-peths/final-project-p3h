@@ -8,6 +8,4 @@ comment2.params=
 comment2.target=int\ getTickets()
 comment3.params=num
 comment3.target=void\ setTickets(int)
-comment4.params=num
-comment4.target=void\ addTickets(int)
-numComments=5
+numComments=4

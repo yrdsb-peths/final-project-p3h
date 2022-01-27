@@ -94,7 +94,7 @@ public class Shop extends World
         if(GoldenTickets.getTickets() >= price && !item.bought) //if # of golden tickets is enough for the item & item is not bought
         {
             Title.cashSound.play();
-            GoldenTickets.addTickets(-price); // deduce cost from golden tickets
+            GoldenTickets.setTickets(GoldenTickets.getTickets()-price); // deduce cost from golden tickets
             boughtItems.add(price); // add the item into list of bought items
             item.soldOut();
         }
